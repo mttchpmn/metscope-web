@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import WebcamViewer from "../components/WebcamViewer/WebcamViewer";
+import { Container } from "@material-ui/core";
 
 class WebcamPage extends Component {
   constructor(props) {
@@ -21,10 +22,12 @@ class WebcamPage extends Component {
   render() {
     return (
       <div className="WebcamPage">
-        WebcamPage working
-        {this.state.loading ? null : (
-          <WebcamViewer webcam={this.state.webcams["glenorchy"]} />
-        )}
+        <Container>
+          WebcamPage working
+          {this.state.loading ? null : (
+            <WebcamViewer webcam={this.state.webcams["glenorchy"]} />
+          )}
+        </Container>
       </div>
     );
   }
