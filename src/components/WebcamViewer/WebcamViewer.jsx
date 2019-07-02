@@ -19,7 +19,8 @@ const styles = {
     maxWidth: 500
   },
   media: {
-    maxHeight: 600
+    width: "100%",
+    maxHeight: 400
   }
 };
 
@@ -42,7 +43,7 @@ class WebcamViewer extends Component {
           <CardMedia
             className={classes.media}
             component="img"
-            height="400"
+            height="500"
             src={webcam.images[this.state.index].url}
             title={webcam.title}
           />
@@ -52,9 +53,6 @@ class WebcamViewer extends Component {
             )}
           </Typography>
         </CardActionArea>
-        <CardContent>
-          <Typography>{webcam.desc}</Typography>
-        </CardContent>
         <CardActions>
           <Container>
             {this.state.index > 0 ? (
@@ -81,6 +79,9 @@ class WebcamViewer extends Component {
             ) : null}
           </Container>
         </CardActions>
+        <CardContent>
+          <Typography>{webcam.desc}</Typography>
+        </CardContent>
       </Card>
     );
   }

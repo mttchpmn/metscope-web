@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import WebcamViewer from "../components/WebcamViewer/WebcamViewer";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  root: {
+    flexGrow: 1
+  }
+};
 
 class WebcamPage extends Component {
   constructor(props) {
@@ -20,17 +28,29 @@ class WebcamPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="WebcamPage">
-        <Container>
-          WebcamPage working
-          {this.state.loading ? null : (
+      <Container maxWidth="xl">
+        WEBCAMS
+        {this.state.loading ? null : (
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              {Object.keys(this.state.webcams).map(camName => (
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <WebcamViewer webcam={this.state.webcams[camName]} />
+                </Grid>
+              ))}
+            </Grid>
             <WebcamViewer webcam={this.state.webcams["glenorchy"]} />
-          )}
-        </Container>
-      </div>
+          </div>
+        )}
+      </Container>
     );
   }
 }
 
-export default WebcamPage;
+WebcamPage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(WebcamPage);
