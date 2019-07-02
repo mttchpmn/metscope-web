@@ -27,15 +27,13 @@ class WebcamViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: this.props.webcam.images.length - 1
-      //   activeImage: this.props.webcam.images[index]
+      index: this.props.webcam.images.length - 1,
+      images: this.props.webcam.images
     };
-    console.log("this.state :", this.state);
   }
 
   render() {
     const { classes, webcam } = this.props;
-    const activeImage = this.props.webcam.images[this.state.index];
 
     return (
       <Card className={classes.card}>
@@ -45,11 +43,13 @@ class WebcamViewer extends Component {
             className={classes.media}
             component="img"
             height="400"
-            image={activeImage.url}
+            src={webcam.images[this.state.index].url}
             title={webcam.title}
           />
           <Typography>
-            {moment(activeImage.date).format("ddd hh:mm a")}
+            {moment(this.state.images[this.state.index].date).format(
+              "ddd h:mm a"
+            )}
           </Typography>
         </CardActionArea>
         <CardContent>
@@ -57,26 +57,28 @@ class WebcamViewer extends Component {
         </CardContent>
         <CardActions>
           <Container>
-            <IconButton
-              onClick={() => {
-                console.log("this.state.index0 :", this.state.index);
-                this.setState(prevState => ({
-                  index: prevState.index - 1
-                }));
-                console.log("this.state.index1 :", this.state.index);
-              }}
-            >
-              <NavigateBeforeIcon />
-            </IconButton>
-            <IconButton
-              onClick={() =>
-                this.setState(prevState => ({
-                  index: prevState.index + 1
-                }))
-              }
-            >
-              <NavigateNextIcon />
-            </IconButton>
+            {this.state.index > 0 ? (
+              <IconButton
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index - 1
+                  }))
+                }
+              >
+                <NavigateBeforeIcon />
+              </IconButton>
+            ) : null}
+            {this.state.index < webcam.images.length - 1 ? (
+              <IconButton
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index + 1
+                  }))
+                }
+              >
+                <NavigateNextIcon />
+              </IconButton>
+            ) : null}
           </Container>
         </CardActions>
       </Card>
