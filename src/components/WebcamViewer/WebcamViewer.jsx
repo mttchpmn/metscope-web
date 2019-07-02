@@ -7,7 +7,10 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@material-ui/core";
+import { Button, CardHeader, IconButton, Container } from "@material-ui/core";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import FullScreenIcon from "@material-ui/icons/Fullscreen";
 
 const moment = require("moment");
 
@@ -16,48 +19,65 @@ const styles = {
     maxWidth: 500
   },
   media: {
-    maxHeight: 200
+    maxHeight: 600
   }
 };
 
 class WebcamViewer extends Component {
   constructor(props) {
     super(props);
-    this.classes = this.props.classes;
     this.state = {
-      index: this.props.webcam.images.length - 1,
-      title: this.props.webcam.title,
-      desc: this.props.webcam.desc,
-      images: this.props.webcam.images
+      index: this.props.webcam.images.length - 1
+      //   activeImage: this.props.webcam.images[index]
     };
+    console.log("this.state :", this.state);
   }
 
   render() {
-    const classes = this.props.styles;
-    console.log("styles :", styles);
-    console.log("classes :", this.classes);
+    const { classes, webcam } = this.props;
     const activeImage = this.props.webcam.images[this.state.index];
-    console.log("activeImage.url :", activeImage.url);
 
     return (
-      <Card className={this.classes.card}>
+      <Card className={classes.card}>
+        <CardHeader title={webcam.title} />
         <CardActionArea>
           <CardMedia
-            className={this.classes.media}
+            className={classes.media}
             component="img"
-            height="200"
+            height="400"
             image={activeImage.url}
-            title={this.state.title}
+            title={webcam.title}
           />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {this.state.title}
-            </Typography>
-            <Typography>{this.state.desc}</Typography>
-          </CardContent>
+          <Typography>
+            {moment(activeImage.date).format("ddd hh:mm a")}
+          </Typography>
         </CardActionArea>
+        <CardContent>
+          <Typography>{webcam.desc}</Typography>
+        </CardContent>
         <CardActions>
-          <Button size="medium" color="primary" />
+          <Container>
+            <IconButton
+              onClick={() => {
+                console.log("this.state.index0 :", this.state.index);
+                this.setState(prevState => ({
+                  index: prevState.index - 1
+                }));
+                console.log("this.state.index1 :", this.state.index);
+              }}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+            <IconButton
+              onClick={() =>
+                this.setState(prevState => ({
+                  index: prevState.index + 1
+                }))
+              }
+            >
+              <NavigateNextIcon />
+            </IconButton>
+          </Container>
         </CardActions>
       </Card>
     );
