@@ -7,16 +7,17 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Button, CardHeader, IconButton, Container } from "@material-ui/core";
+import { CardHeader, IconButton, Container } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import FullScreenIcon from "@material-ui/icons/Fullscreen";
 
 const moment = require("moment");
 
 const styles = {
   card: {
-    maxWidth: 500
+    maxWidth: 500,
+    maxHeight: 700,
+    minHeight: 700
   },
   media: {
     width: "100%",

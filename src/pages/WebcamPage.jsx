@@ -31,7 +31,6 @@ class WebcamPage extends Component {
     const { classes } = this.props;
     return (
       <Container maxWidth="xl">
-        WEBCAMS
         {this.state.loading ? null : (
           <div className={classes.root}>
             <Grid container spacing={3}>
