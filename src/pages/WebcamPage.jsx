@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import WebcamViewer from "../components/WebcamViewer/WebcamViewer";
-import { Container, Grid, Typography } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -35,7 +35,7 @@ class WebcamPage extends Component {
           <div className={classes.root}>
             <Grid container spacing={3}>
               {Object.keys(this.state.webcams).map(camName => (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Grid key={camName} item xs={12} sm={6} md={4} lg={3}>
                   <WebcamViewer webcam={this.state.webcams[camName]} />
                 </Grid>
               ))}
