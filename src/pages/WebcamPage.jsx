@@ -21,7 +21,7 @@ class WebcamPage extends Component {
   }
 
   componentDidMount() {
-    Axios.get("http://api.metscope.com/webcam/load/all").then(response => {
+    Axios.get("https://api.metscope.com/webcam/load/all").then(response => {
       this.setState({ webcams: response.data, loading: false });
       console.log("webcams :", response.data);
     });
