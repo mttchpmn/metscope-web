@@ -154,28 +154,26 @@ class WebcamViewer extends Component {
           </CardActionArea>
           <CardActions>
             <Container>
-              {this.state.index > 0 ? (
-                <IconButton
-                  onClick={() =>
-                    this.setState(prevState => ({
-                      index: prevState.index - 1
-                    }))
-                  }
-                >
-                  <NavigateBeforeIcon />
-                </IconButton>
-              ) : null}
-              {this.state.index < webcam.images.length - 1 ? (
-                <IconButton
-                  onClick={() =>
-                    this.setState(prevState => ({
-                      index: prevState.index + 1
-                    }))
-                  }
-                >
-                  <NavigateNextIcon />
-                </IconButton>
-              ) : null}
+              <IconButton
+                disabled={this.state.index === 0}
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index - 1
+                  }))
+                }
+              >
+                <NavigateBeforeIcon />
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index + 1
+                  }))
+                }
+                disabled={this.state.index === webcam.images.length - 1}
+              >
+                <NavigateNextIcon />
+              </IconButton>
             </Container>
           </CardActions>
           <CardContent>
