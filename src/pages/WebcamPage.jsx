@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import WebcamViewer from "../components/WebcamViewer/WebcamViewer";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
