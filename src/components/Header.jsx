@@ -46,7 +46,7 @@ const Header = props => {
       </AppBar>
 
       <Drawer open={state.drawerOpen} onClose={() => closeDrawer()}>
-        NAV TO GO HERE
+        {props.children}
       </Drawer>
     </div>
   );

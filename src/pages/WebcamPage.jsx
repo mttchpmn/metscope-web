@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import WebcamViewer from "../components/WebcamViewer/WebcamViewer";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Paper, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -31,7 +31,11 @@ class WebcamPage extends Component {
     const { classes } = this.props;
     return (
       <Container maxWidth="xl">
-        {this.state.loading ? null : (
+        {this.state.loading ? (
+          <Container alignItems="center" justify="center">
+            <Typography variant="h4">Loading webcams...</Typography>
+          </Container>
+        ) : (
           <div className={classes.root}>
             <Grid container spacing={3}>
               {Object.keys(this.state.webcams).map(camName => (
