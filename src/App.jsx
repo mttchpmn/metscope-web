@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import "./App.css";
 import WindyPage from "./pages/WindyPage";
 import SatViewPage from "./pages/SatViewPage";
+import MetvuwPage from "./pages/MetvuwPage";
 
 function App() {
   return (
@@ -32,12 +33,14 @@ function App() {
                 </ListItem>
               </Link>
 
-              <ListItem button>
-                <ListItemIcon>
-                  <PhotoIcon />
-                </ListItemIcon>
-                <ListItemText primary={"MetVUW"} />
-              </ListItem>
+              <Link to="/metvuw">
+                <ListItem button>
+                  <ListItemIcon>
+                    <PhotoIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"MetVUW"} />
+                </ListItem>
+              </Link>
 
               <ListItem button>
                 <ListItemIcon>
@@ -55,19 +58,20 @@ function App() {
                 </ListItem>
               </Link>
 
-              <Link to="/satview">
+              {/* <Link to="/satview">
                 <ListItem button>
                   <ListItemIcon>
                     <SatelliteIcon />
                   </ListItemIcon>
                   <ListItemText primary={"SatView"} />
                 </ListItem>
-              </Link>
+              </Link> */}
             </List>
           </div>
         </Header>
         <Route exact path="/" component={WebcamPage} />
         <Route exact path="/webcams" component={WebcamPage} />
+        <Route exact path="/metvuw" component={MetvuwPage} />
         <Route exact path="/windy" component={WindyPage} />
         <Route exact path="/satview" component={SatViewPage} />
       </Router>
