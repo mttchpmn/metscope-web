@@ -44,7 +44,6 @@ class WebcamPage extends Component {
                 </Grid>
               ))}
             </Grid>
-            <WebcamViewer webcam={this.state.webcams["glenorchy"]} />
           </div>
         )}
       </Container>
