@@ -38,11 +38,19 @@ class WebcamPage extends Component {
         ) : (
           <div className={classes.root}>
             <Grid container spacing={3}>
-              {Object.keys(this.state.webcams).map(camName => (
-                <Grid key={camName} item xs={12} sm={6} md={4} lg={3}>
-                  <WebcamViewer webcam={this.state.webcams[camName]} />
-                </Grid>
-              ))}
+              {Object.keys(this.state.webcams).map(camName => {
+                // Don't try and generate a Webcam Viewer if we don't have any images to show
+                if (
+                  this.state.webcams[camName] &&
+                  this.state.webcams[camName].images.length
+                ) {
+                  return (
+                    <Grid key={camName} item xs={12} sm={6} md={4} lg={3}>
+                      <WebcamViewer webcam={this.state.webcams[camName]} />
+                    </Grid>
+                  );
+                }
+              })}
             </Grid>
           </div>
         )}
