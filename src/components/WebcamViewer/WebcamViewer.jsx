@@ -126,7 +126,7 @@ class WebcamViewer extends Component {
             </Typography>
           </CardActionArea>
           <CardActions>
-            <Container>
+            <Container align="center">
               <IconButton
                 disabled={this.state.index === 0}
                 onClick={() =>
