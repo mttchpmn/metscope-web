@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactGA from "react-ga";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -59,8 +60,13 @@ class WebcamViewer extends Component {
     };
   }
 
-  handleOpen() {
+  handleOpen(webcam) {
     console.log("OPEN CALLED");
+    ReactGA.event({
+      category: "Data Interaction",
+      action: "Opened Webcam",
+      label: `Webcam: ${webcam}`
+    });
     this.setState({ fullScreen: true });
   }
 
@@ -136,7 +142,7 @@ class WebcamViewer extends Component {
 
         <Card className={classes.card}>
           <CardHeader title={webcam.title} />
-          <CardActionArea onClick={() => this.handleOpen()}>
+          <CardActionArea onClick={() => this.handleOpen(webcam.title)}>
             <CardMedia
               className={classes.media}
               component="img"

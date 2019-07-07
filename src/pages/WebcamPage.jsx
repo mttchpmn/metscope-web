@@ -31,7 +31,7 @@ class WebcamPage extends Component {
     return (
       <Container maxWidth="xl">
         {this.state.loading ? (
-          <Container alignItems="center" justify="center">
+          <Container justify="center">
             <Typography variant="h4">Loading webcams...</Typography>
           </Container>
         ) : (
