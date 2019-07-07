@@ -21,6 +21,7 @@ import {
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import CloseIcon from "@material-ui/icons/Close";
+import FullScreenDialog from "../FullScreenDialog";
 
 const moment = require("moment");
 
@@ -80,65 +81,46 @@ class WebcamViewer extends Component {
 
     return (
       <div>
-        <Dialog
-          fullScreen
+        <FullScreenDialog
+          title={webcam.title}
           open={this.state.fullScreen}
           onClose={() => this.handleClose()}
         >
-          <AppBar className={classes.appBar}>
-            <Toolbar>
+          <img
+            className={classes.image}
+            src={webcam.images[this.state.index].url}
+          />
+          <Paper>
+            <Typography align="center" variant="h6">
+              {moment(this.state.images[this.state.index].date).format(
+                "ddd h:mm a"
+              )}
+            </Typography>
+
+            <Container align="center">
               <IconButton
-                edge="start"
-                color="inherit"
-                onClick={() => this.handleClose()}
+                disabled={this.state.index === 0}
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index - 1
+                  }))
+                }
               >
-                <CloseIcon />
+                <NavigateBeforeIcon />
               </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                {webcam.title}
-              </Typography>
-            </Toolbar>
-          </AppBar>
-
-          <Grid container spacing={0} direction="column" alignItems="center">
-            <Grid item xs={12}>
-              <img
-                className={classes.image}
-                src={webcam.images[this.state.index].url}
-              />
-              <Paper>
-                <Typography align="center" variant="h6">
-                  {moment(this.state.images[this.state.index].date).format(
-                    "ddd h:mm a"
-                  )}
-                </Typography>
-
-                <Container align="center">
-                  <IconButton
-                    disabled={this.state.index === 0}
-                    onClick={() =>
-                      this.setState(prevState => ({
-                        index: prevState.index - 1
-                      }))
-                    }
-                  >
-                    <NavigateBeforeIcon />
-                  </IconButton>
-                  <IconButton
-                    onClick={() =>
-                      this.setState(prevState => ({
-                        index: prevState.index + 1
-                      }))
-                    }
-                    disabled={this.state.index === webcam.images.length - 1}
-                  >
-                    <NavigateNextIcon />
-                  </IconButton>
-                </Container>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Dialog>
+              <IconButton
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index + 1
+                  }))
+                }
+                disabled={this.state.index === webcam.images.length - 1}
+              >
+                <NavigateNextIcon />
+              </IconButton>
+            </Container>
+          </Paper>
+        </FullScreenDialog>
 
         <Card className={classes.card}>
           <CardHeader title={webcam.title} />
