@@ -43,7 +43,7 @@ class WebcamPage extends Component {
           <LoadingSpinner />
         ) : (
           <div className={classes.root}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               {Object.keys(this.state.webcams).map(camName => {
                 // Don't try and generate a Webcam Viewer if we don't have any images to show
                 if (

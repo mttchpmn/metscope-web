@@ -61,7 +61,7 @@ class MetvuwPage extends Component {
     const { classes } = this.props;
     return (
       <Container maxWidth="xl">
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {this.state.loading ? (
             <LoadingSpinner />
           ) : (
