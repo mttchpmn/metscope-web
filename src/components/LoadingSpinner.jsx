@@ -1,11 +1,20 @@
 import React from "react";
-import { Container, CircularProgress } from "@material-ui/core";
+import { Container, CircularProgress, Grid } from "@material-ui/core";
 
 const LoadingSpinner = props => {
   return (
-    <Container align="center">
-      <CircularProgress />
-    </Container>
+    <Grid
+      style={{ height: "80vh" }}
+      container
+      alignItems="center"
+      justify="center"
+    >
+      <Grid item>
+        <Container align="center">
+          <CircularProgress />
+        </Container>
+      </Grid>
+    </Grid>
   );
 };
 
