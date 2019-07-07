@@ -1,8 +1,7 @@
 import React from "react";
 import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
-import { BrowserRouter as Route, Link } from "react-router-dom";
-import { Router } from "react-router-dom";
+import { HashRouter, Route, Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import CameraIcon from "@material-ui/icons/CameraAlt";
@@ -19,8 +18,7 @@ import WindyPage from "./pages/WindyPage";
 import SatViewPage from "./pages/SatViewPage";
 import MetvuwPage from "./pages/MetvuwPage";
 
-// const trackingId = process.env.REACT_APP_TRACKING_ID;
-const trackingId = "UA-143397746-1";
+const trackingId = process.env.REACT_APP_TRACKING_ID;
 console.log("trackingId :", trackingId);
 ReactGA.initialize(trackingId, {
   debug: true,
@@ -38,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <Router history={history}>
+      <HashRouter history={history}>
         <Header>
           <div>
             <List>
@@ -94,7 +92,7 @@ function App() {
         <Route exact path="/metvuw" component={MetvuwPage} />
         <Route exact path="/windy" component={WindyPage} />
         <Route exact path="/qmug" component={QmugPage} />
-      </Router>
+      </HashRouter>
     </div>
   );
 }
