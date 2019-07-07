@@ -8,16 +8,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import {
-  CardHeader,
-  IconButton,
-  Container,
-  Dialog,
-  AppBar,
-  Toolbar,
-  Paper,
-  Grid
-} from "@material-ui/core";
+import { CardHeader, IconButton, Container, Paper } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import CloseIcon from "@material-ui/icons/Close";
