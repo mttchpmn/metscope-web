@@ -1,6 +1,8 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import ReactGA from "react-ga";
+import { createBrowserHistory } from "history";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import CameraIcon from "@material-ui/icons/CameraAlt";
 import SatelliteIcon from "@material-ui/icons/Satellite";
@@ -12,16 +14,25 @@ import WebcamPage from "./pages/WebcamPage";
 import QmugPage from "./pages/QmugPage";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
-import "./App.css";
 import WindyPage from "./pages/WindyPage";
 import SatViewPage from "./pages/SatViewPage";
 import MetvuwPage from "./pages/MetvuwPage";
+
+const trackingId = process.env.REACT_APP_TRACKING_ID;
+ReactGA.initialize(trackingId);
+
+const history = createBrowserHistory();
+
+history.listen(location => {
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+});
 
 function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <Router>
+      <Router history={history}>
         <Header>
           <div>
             <List>
