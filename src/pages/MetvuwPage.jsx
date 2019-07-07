@@ -10,6 +10,7 @@ import {
   withStyles
 } from "@material-ui/core";
 import LoadingSpinner from "../components/LoadingSpinner";
+import FullScreenDialog from "../components/FullScreenDialog";
 
 const styles = {
   card: {
@@ -44,6 +45,7 @@ class MetvuwPage extends Component {
     super(props);
     this.state = {
       images: [],
+      index: 0,
       loading: true
     };
   }
@@ -60,25 +62,45 @@ class MetvuwPage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Container maxWidth="xl">
-        <Grid container spacing={2}>
-          {this.state.loading ? (
-            <LoadingSpinner />
-          ) : (
-            this.state.images.map((img, index) => {
-              return (
-                <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
-                  <Card className={classes.card}>
-                    <CardActionArea>
-                      <CardMedia component="img" height="300" src={img} />
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-              );
-            })
-          )}
-        </Grid>
-      </Container>
+      <div>
+        <FullScreenDialog
+          title="MetVuw Image"
+          open={this.state.dialogOpen}
+          onClose={() => this.setState({ dialogOpen: false })}
+        >
+          <Card>
+            <CardMedia
+              component="img"
+              height={"90%"}
+              src={this.state.images[this.state.index]}
+            />
+          </Card>
+        </FullScreenDialog>
+
+        <Container maxWidth="xl">
+          <Grid container spacing={2}>
+            {this.state.loading ? (
+              <LoadingSpinner />
+            ) : (
+              this.state.images.map((img, index) => {
+                return (
+                  <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+                    <Card className={classes.card}>
+                      <CardActionArea
+                        onClick={() =>
+                          this.setState({ index: index, dialogOpen: true })
+                        }
+                      >
+                        <CardMedia component="img" height="300" src={img} />
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+                );
+              })
+            )}
+          </Grid>
+        </Container>
+      </div>
     );
   }
 }
