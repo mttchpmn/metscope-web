@@ -2,25 +2,28 @@ import React, { Component } from "react";
 import ReactGA from "react-ga";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { CardHeader, IconButton, Container, Paper } from "@material-ui/core";
+import {
+  CardHeader,
+  IconButton,
+  Container,
+  Paper,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography
+} from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import CloseIcon from "@material-ui/icons/Close";
+
 import FullScreenDialog from "../FullScreenDialog";
 
 const moment = require("moment");
 
 const styles = {
   card: {
-    maxWidth: 500,
-    maxHeight: 700,
-    minHeight: 700
+    height: 650
   },
   media: {
     width: "100%",
@@ -28,17 +31,10 @@ const styles = {
   },
   appBar: {
     position: "relative"
-    // marginBottom: 30
   },
   title: {
     marginLeft: 30,
     flex: 1
-  },
-  image: {
-    minWidth: 750,
-    maxWidth: "100%",
-    height: "auto",
-    maxHeight: 750
   }
 };
 
