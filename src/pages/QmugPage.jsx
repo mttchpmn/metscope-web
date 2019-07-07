@@ -4,6 +4,7 @@ import { Container, Typography, Grid } from "@material-ui/core";
 
 import QmugViewer from "../components/QmugViewer/QmugViewer";
 import ImageCard from "../components/ImageCard/ImageCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 class QmugPage extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class QmugPage extends Component {
     return (
       <Container maxWidth="xl">
         {this.state.loading ? (
-          <Typography>Loading...</Typography>
+          <LoadingSpinner />
         ) : (
           <Grid
             container

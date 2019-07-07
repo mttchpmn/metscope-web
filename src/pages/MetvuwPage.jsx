@@ -9,6 +9,7 @@ import {
   Grid,
   withStyles
 } from "@material-ui/core";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const styles = {
   card: {
@@ -62,7 +63,7 @@ class MetvuwPage extends Component {
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           {this.state.loading ? (
-            <Typography>Loading images...</Typography>
+            <LoadingSpinner />
           ) : (
             this.state.images.map((img, index) => {
               return (
