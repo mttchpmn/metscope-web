@@ -15,7 +15,6 @@ import QmugPage from "./pages/QmugPage";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import WindyPage from "./pages/WindyPage";
-import SatViewPage from "./pages/SatViewPage";
 import MetvuwPage from "./pages/MetvuwPage";
 
 const trackingId = process.env.REACT_APP_TRACKING_ID;
@@ -75,15 +74,6 @@ function App() {
                   <ListItemText primary={"Windy"} />
                 </ListItem>
               </Link>
-
-              {/* <Link to="/satview">
-                <ListItem button>
-                  <ListItemIcon>
-                    <SatelliteIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"SatView"} />
-                </ListItem>
-              </Link> */}
             </List>
           </div>
         </Header>
