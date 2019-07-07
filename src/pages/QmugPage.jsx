@@ -1,45 +1,11 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import {
-  Container,
-  Typography,
-  Card,
-  CardActionArea,
-  CardMedia,
-  Grid,
-  withStyles
-} from "@material-ui/core";
+import { Container, Typography, Grid } from "@material-ui/core";
+
 import QmugViewer from "../components/QmugViewer/QmugViewer";
+import ImageCard from "../components/ImageCard/ImageCard";
 
-const styles = {
-  card: {
-    width: 350
-    // maxWidth: 500,
-    // minWidth: 500
-    // maxHeight: 700,
-    // minHeight: 700
-  },
-  media: {
-    width: "100%",
-    maxHeight: 400
-  },
-  appBar: {
-    position: "relative"
-    // marginBottom: 30
-  },
-  title: {
-    marginLeft: 30,
-    flex: 1
-  },
-  image: {
-    minWidth: 750,
-    maxWidth: "100%",
-    height: "auto",
-    maxHeight: 750
-  }
-};
-
-class MetvuwPage extends Component {
+class QmugPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,7 +21,6 @@ class MetvuwPage extends Component {
 
   componentDidMount() {
     Axios.get("https://api.metscope.com/weather/scrape/qmug").then(response => {
-      console.log(response);
       this.setState({
         metar: response.data.data.metar,
         aaw: response.data.data.aaw,
@@ -65,25 +30,48 @@ class MetvuwPage extends Component {
         sigwx: response.data.data.sigwx,
         loading: false
       });
-      console.log("state:\n", this.state);
     });
   }
 
   render() {
-    const { classes } = this.props;
     return (
       <Container maxWidth="xl">
         {this.state.loading ? (
           <Typography>Loading...</Typography>
         ) : (
-          <div>
-            <Typography>Qmug page working</Typography>
-            <QmugViewer type="text" name="METAR" dataArray={this.state.metar} />
-          </div>
+          <Grid
+            container
+            justify="space-around"
+            alignItems="stretch"
+            spacing={2}
+          >
+            <Grid item xs={12} md={4} xl={3}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <QmugViewer name="METAR" dataArray={this.state.metar} />
+                </Grid>
+                <Grid item xs={12}>
+                  <QmugViewer name="AAW" dataArray={this.state.aaw} />
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={12} md={4} xl={3}>
+              <QmugViewer name="TAF" dataArray={this.state.taf} />
+            </Grid>
+            <Grid item xs={12} md={4} xl={3}>
+              <ImageCard
+                title="Images"
+                images={this.state.grafor
+                  .concat(this.state.sigmet)
+                  .concat(this.state.sigwx)}
+              />
+            </Grid>
+          </Grid>
         )}
       </Container>
     );
   }
 }
 
-export default withStyles(styles)(MetvuwPage);
+export default QmugPage;
