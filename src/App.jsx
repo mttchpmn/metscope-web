@@ -9,6 +9,7 @@ import PhotoIcon from "@material-ui/icons/Photo";
 import PublicIcon from "@material-ui/icons/Public";
 
 import WebcamPage from "./pages/WebcamPage";
+import QmugPage from "./pages/QmugPage";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import "./App.css";
@@ -42,12 +43,14 @@ function App() {
                 </ListItem>
               </Link>
 
-              <ListItem button>
-                <ListItemIcon>
-                  <FlightIcon />
-                </ListItemIcon>
-                <ListItemText primary={"QMUG"} />
-              </ListItem>
+              <Link to="/qmug">
+                <ListItem button>
+                  <ListItemIcon>
+                    <FlightIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"QMUG"} />
+                </ListItem>
+              </Link>
 
               <Link to="/windy">
                 <ListItem button>
@@ -73,7 +76,7 @@ function App() {
         <Route exact path="/webcams" component={WebcamPage} />
         <Route exact path="/metvuw" component={MetvuwPage} />
         <Route exact path="/windy" component={WindyPage} />
-        <Route exact path="/satview" component={SatViewPage} />
+        <Route exact path="/qmug" component={QmugPage} />
       </Router>
     </div>
   );
