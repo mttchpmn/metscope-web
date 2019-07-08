@@ -17,6 +17,8 @@ import Header from "./components/Header";
 import WindyPage from "./pages/WindyPage";
 import MetvuwPage from "./pages/MetvuwPage";
 
+import { useAuth0 } from "./react-auth0-wrapper";
+
 const trackingId = process.env.REACT_APP_TRACKING_ID;
 console.log("trackingId :", trackingId);
 ReactGA.initialize(trackingId, {
@@ -32,6 +34,8 @@ history.listen(location => {
 });
 
 function App() {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <div className="App">
       <CssBaseline />
@@ -77,6 +81,14 @@ function App() {
             </List>
           </div>
         </Header>
+
+        <div>
+          {!isAuthenticated && (
+            <button onClick={() => loginWithRedirect({})}>Log In</button>
+          )}
+          {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+        </div>
+
         <Route exact path="/" component={WebcamPage} />
         <Route exact path="/webcams" component={WebcamPage} />
         <Route exact path="/metvuw" component={MetvuwPage} />
