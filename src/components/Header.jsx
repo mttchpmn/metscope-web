@@ -5,16 +5,20 @@ import {
   IconButton,
   Typography,
   makeStyles,
-  Drawer
+  Drawer,
+  Button
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import { useAuth0 } from "../react-auth0-wrapper";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
     marginBottom: 30
   },
   title: {
-    marginLeft: 30
+    marginLeft: 30,
+    flexGrow: 1
   }
 }));
 
@@ -23,6 +27,7 @@ const Header = props => {
   const [state, setState] = React.useState({
     drawerOpen: false
   });
+  const { logout } = useAuth0();
 
   const openDrawer = () => {
     setState({ ...state, drawerOpen: true });
@@ -42,6 +47,9 @@ const Header = props => {
           <Typography variant="h6" className={classes.title}>
             Metscope
           </Typography>
+          <Button color="inherit" onClick={() => logout()}>
+            Log Out
+          </Button>
         </Toolbar>
       </AppBar>
 

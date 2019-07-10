@@ -59,7 +59,11 @@ const HomePage = props => {
             Your single source of weather for Milford Sound and beyond
           </Typography>
         </Box>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => loginWithRedirect({})}
+        >
           Sign Up
         </Button>
       </Container>

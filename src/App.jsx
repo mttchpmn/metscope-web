@@ -39,13 +39,11 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
-      {!isAuthenticated && (
+      {!isAuthenticated ? (
         <div>
           <HomePage />
-          <button onClick={() => loginWithRedirect({})}>Log In</button>
         </div>
-      )}
-      {isAuthenticated && (
+      ) : (
         <div>
           <HashRouter history={history}>
             <Header>
@@ -90,13 +88,13 @@ function App() {
               </div>
             </Header>
 
-            <div>
+            {/* <div>
               {isAuthenticated && (
                 <button onClick={() => logout()}>Log out</button>
               )}
-            </div>
+            </div> */}
 
-            <div>{JSON.stringify(user)}</div>
+            {/* <div>{JSON.stringify(user)}</div> */}
 
             <Route exact path="/" component={WebcamPage} />
             <Route exact path="/webcams" component={WebcamPage} />
