@@ -38,7 +38,6 @@ function App() {
 
   return (
     <div className="App">
-      <CssBaseline />
       {!isAuthenticated ? (
         <div>
           <HomePage />

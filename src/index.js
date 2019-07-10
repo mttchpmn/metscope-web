@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { Auth0Provider } from "./react-auth0-wrapper";
 import "./index.css";
+import Themer from "./components/Themer";
+import { CssBaseline } from "@material-ui/core";
 
 const onRedirectCalback = appState => {
   window.history.replaceState(
@@ -21,7 +23,10 @@ ReactDOM.render(
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCalback}
   >
-    <App />
+    <CssBaseline />
+    <Themer>
+      <App />
+    </Themer>
   </Auth0Provider>,
 
   document.getElementById("root")
