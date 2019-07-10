@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -18,14 +19,6 @@ const HomePage = props => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography style={{ flexGrow: 1 }}>MetScope</Typography>
-          <Button color="inherit" onClick={() => loginWithRedirect({})}>
-            Log In
-          </Button>
-        </Toolbar>
-      </AppBar>
       <div
         style={{
           width: "100%",
@@ -59,13 +52,18 @@ const HomePage = props => {
             Your single source of weather for Milford Sound and beyond
           </Typography>
         </Box>
-        <Button
+        {/* <Button
           variant="contained"
           color="primary"
           onClick={() => loginWithRedirect({})}
         >
           Sign Up
-        </Button>
+        </Button> */}
+        <Link to="/webcams">
+          <Button variant="contained" color="primary">
+            Start
+          </Button>
+        </Link>
       </Container>
     </div>
   );

@@ -14,7 +14,7 @@ import { useAuth0 } from "../react-auth0-wrapper";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    marginBottom: 30
+    // marginBottom: 30
   },
   title: {
     marginLeft: 30,
@@ -47,9 +47,9 @@ const Header = props => {
           <Typography variant="h6" className={classes.title}>
             Metscope (beta)
           </Typography>
-          <Button color="inherit" onClick={() => logout()}>
+          {/* <Button color="inherit" onClick={() => logout()}>
             Log Out
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
 
