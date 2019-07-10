@@ -52,7 +52,7 @@ const HomePage = props => {
       </div>
       <Container align="center" style={{ marginTop: 40 }}>
         <Typography gutterBottom variant="h3">
-          MetScope (Beta)
+          MetScope (beta)
         </Typography>
         <Box style={{ marginBottom: 30 }}>
           <Typography gutterBottom variant="body">

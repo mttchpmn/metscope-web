@@ -45,7 +45,7 @@ const Header = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Metscope
+            Metscope (beta)
           </Typography>
           <Button color="inherit" onClick={() => logout()}>
             Log Out
