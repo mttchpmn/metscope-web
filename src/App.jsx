@@ -34,67 +34,78 @@ history.listen(location => {
 });
 
 function App() {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   return (
     <div className="App">
       <CssBaseline />
-      <HashRouter history={history}>
-        <Header>
-          <div>
-            <List>
-              <Link to="/webcams">
-                <ListItem button>
-                  <ListItemIcon>
-                    <CameraIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"Webcams"} />
-                </ListItem>
-              </Link>
-
-              <Link to="/metvuw">
-                <ListItem button>
-                  <ListItemIcon>
-                    <PhotoIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"MetVUW"} />
-                </ListItem>
-              </Link>
-
-              <Link to="/qmug">
-                <ListItem button>
-                  <ListItemIcon>
-                    <FlightIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"QMUG"} />
-                </ListItem>
-              </Link>
-
-              <Link to="/windy">
-                <ListItem button>
-                  <ListItemIcon>
-                    <PublicIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"Windy"} />
-                </ListItem>
-              </Link>
-            </List>
-          </div>
-        </Header>
-
+      {!isAuthenticated && (
         <div>
-          {!isAuthenticated && (
-            <button onClick={() => loginWithRedirect({})}>Log In</button>
-          )}
-          {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+          <HomePage />
+          <button onClick={() => loginWithRedirect({})}>Log In</button>
         </div>
+      )}
+      {isAuthenticated && (
+        <div>
+          <HashRouter history={history}>
+            <Header>
+              <div>
+                <List>
+                  <Link to="/webcams">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <CameraIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"Webcams"} />
+                    </ListItem>
+                  </Link>
 
-        <Route exact path="/" component={WebcamPage} />
-        <Route exact path="/webcams" component={WebcamPage} />
-        <Route exact path="/metvuw" component={MetvuwPage} />
-        <Route exact path="/windy" component={WindyPage} />
-        <Route exact path="/qmug" component={QmugPage} />
-      </HashRouter>
+                  <Link to="/metvuw">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <PhotoIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"MetVUW"} />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/qmug">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <FlightIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"QMUG"} />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/windy">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <PublicIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"Windy"} />
+                    </ListItem>
+                  </Link>
+                </List>
+              </div>
+            </Header>
+
+            <div>
+              {isAuthenticated && (
+                <button onClick={() => logout()}>Log out</button>
+              )}
+            </div>
+
+            <div>{JSON.stringify(user)}</div>
+
+            <Route exact path="/" component={WebcamPage} />
+            <Route exact path="/webcams" component={WebcamPage} />
+            <Route exact path="/metvuw" component={MetvuwPage} />
+            <Route exact path="/windy" component={WindyPage} />
+            <Route exact path="/qmug" component={QmugPage} />
+          </HashRouter>
+        </div>
+      )}
     </div>
   );
 }
