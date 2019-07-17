@@ -39,7 +39,7 @@ class WebcamPage extends Component {
             <Grid container spacing={2}>
               {this.state.webcams.map((camObj, index) => {
                 // Don't try and generate a Webcam Viewer if we don't have any images to show
-                if (camObj && camObj.images.length) {
+                if (camObj.images && camObj.images.length) {
                   return (
                     <Grid key={camObj.name} item xs={12} sm={6} md={4} lg={3}>
                       <WebcamViewer webcam={camObj} />
