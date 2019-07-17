@@ -21,7 +21,7 @@ class QmugPage extends Component {
   }
 
   componentDidMount() {
-    Axios.get("https://api.metscope.com/weather/scrape/qmug").then(response => {
+    Axios.get(`${config.API_ADDRESS}/weather/scrape/qmug`).then(response => {
       this.setState({
         metar: response.data.data.metar,
         aaw: response.data.data.aaw,

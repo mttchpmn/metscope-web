@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import LoadingSpinner from "../components/LoadingSpinner";
 import FullScreenDialog from "../components/FullScreenDialog";
+import config from "../config";
 
 const styles = {
   card: {
@@ -51,7 +52,7 @@ class MetvuwPage extends Component {
   }
 
   componentDidMount() {
-    Axios.get("https://api.metscope.com/weather/scrape/metvuw/nzsi").then(
+    Axios.get(`${config.API_ADDRESS}/weather/scrape/metvuw/nzsi`).then(
       response => {
         console.log("response.data :", response.data);
         this.setState({ images: response.data.images, loading: false });

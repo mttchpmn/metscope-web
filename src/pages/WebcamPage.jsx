@@ -5,6 +5,7 @@ import { Container, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import LoadingSpinner from "../components/LoadingSpinner";
+import config from "../config";
 
 const styles = {
   root: {
