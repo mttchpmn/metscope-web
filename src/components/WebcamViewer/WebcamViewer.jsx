@@ -16,6 +16,8 @@ import {
 } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import LastPageIcon from "@material-ui/icons/LastPage";
 
 import FullScreenDialog from "../FullScreenDialog";
 
@@ -76,6 +78,7 @@ class WebcamViewer extends Component {
           <img
             className={classes.image}
             src={webcam.images[this.state.index].url}
+            alt="webcam"
           />
           <Paper>
             <Typography align="center" variant="h6">
@@ -85,6 +88,10 @@ class WebcamViewer extends Component {
             </Typography>
 
             <Container align="center">
+              <IconButton onClick={() => console.log("Skip back clicked")}>
+                <FirstPageIcon />
+              </IconButton>
+
               <IconButton
                 disabled={this.state.index === 0}
                 onClick={() =>
@@ -95,6 +102,7 @@ class WebcamViewer extends Component {
               >
                 <NavigateBeforeIcon />
               </IconButton>
+
               <IconButton
                 onClick={() =>
                   this.setState(prevState => ({
@@ -104,6 +112,10 @@ class WebcamViewer extends Component {
                 disabled={this.state.index === webcam.images.length - 1}
               >
                 <NavigateNextIcon />
+              </IconButton>
+
+              <IconButton onClick={() => console.log("Skip forward clicked")}>
+                <LastPageIcon />
               </IconButton>
             </Container>
           </Paper>
@@ -128,6 +140,17 @@ class WebcamViewer extends Component {
           <CardActions>
             <Container align="center">
               <IconButton
+                disabled={this.state.index >= 0 <= 5}
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index - 5
+                  }))
+                }
+              >
+                <FirstPageIcon />
+              </IconButton>
+
+              <IconButton
                 disabled={this.state.index === 0}
                 onClick={() =>
                   this.setState(prevState => ({
@@ -137,6 +160,7 @@ class WebcamViewer extends Component {
               >
                 <NavigateBeforeIcon />
               </IconButton>
+
               <IconButton
                 onClick={() =>
                   this.setState(prevState => ({
@@ -146,6 +170,17 @@ class WebcamViewer extends Component {
                 disabled={this.state.index === webcam.images.length - 1}
               >
                 <NavigateNextIcon />
+              </IconButton>
+
+              <IconButton
+                onClick={() =>
+                  this.setState(prevState => ({
+                    index: prevState.index + 5
+                  }))
+                }
+                disabled={this.state.index >= webcam.images.length - 5}
+              >
+                <LastPageIcon />
               </IconButton>
             </Container>
           </CardActions>
