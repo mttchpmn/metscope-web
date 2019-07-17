@@ -1,3 +1,3 @@
 module.exports = {
-  API_ADDRESS: "https://api-int.metscope.com"
+  API_ADDRESS: "https://api.metscope.com"
 };
