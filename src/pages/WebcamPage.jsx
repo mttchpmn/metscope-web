@@ -17,12 +17,12 @@ class WebcamPage extends Component {
     super(props);
     this.state = {
       loading: true,
-      webcams: {}
+      webcams: []
     };
   }
 
   componentDidMount() {
-    Axios.get("https://api.metscope.com/webcam/load/all").then(response => {
+    Axios.get(`${config.API_ADDRESS}/webcam/load/all`).then(response => {
       this.setState({ webcams: response.data, loading: false });
     });
   }
@@ -36,15 +36,12 @@ class WebcamPage extends Component {
         ) : (
           <div className={classes.root}>
             <Grid container spacing={2}>
-              {Object.keys(this.state.webcams).map(camName => {
+              {this.state.webcams.map((camObj, index) => {
                 // Don't try and generate a Webcam Viewer if we don't have any images to show
-                if (
-                  this.state.webcams[camName] &&
-                  this.state.webcams[camName].images.length
-                ) {
+                if (camObj && camObj.images.length) {
                   return (
-                    <Grid key={camName} item xs={12} sm={6} md={4} lg={3}>
-                      <WebcamViewer webcam={this.state.webcams[camName]} />
+                    <Grid key={camObj.name} item xs={12} sm={6} md={4} lg={3}>
+                      <WebcamViewer webcam={camObj} />
                     </Grid>
                   );
                 }
