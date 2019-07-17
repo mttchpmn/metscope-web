@@ -5,6 +5,7 @@ import { Container, Typography, Grid } from "@material-ui/core";
 import QmugViewer from "../components/QmugViewer/QmugViewer";
 import ImageCard from "../components/ImageCard/ImageCard";
 import LoadingSpinner from "../components/LoadingSpinner";
+import config from "../config";
 
 class QmugPage extends Component {
   constructor(props) {
