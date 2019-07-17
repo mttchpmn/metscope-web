@@ -14,7 +14,7 @@ import { useAuth0 } from "../react-auth0-wrapper";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    // marginBottom: 30
+    marginBottom: 20
   },
   title: {
     marginLeft: 30,
