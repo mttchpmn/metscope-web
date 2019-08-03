@@ -184,6 +184,7 @@ class WebcamViewer extends Component {
               component="img"
               height="500"
               src={webcam.images[this.state.index].url}
+              key={webcam.images[this.state.index].url}
               title={webcam.title}
             />
             <Typography>
