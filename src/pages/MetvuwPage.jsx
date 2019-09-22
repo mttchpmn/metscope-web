@@ -52,7 +52,7 @@ class MetvuwPage extends Component {
   }
 
   componentDidMount() {
-    Axios.get(`${config.API_ADDRESS}/weather/scrape/metvuw/nzsi`).then(
+    Axios.get(`${config.API_ADDRESS}/data/weather/load/metvuw/nzsi`).then(
       response => {
         console.log("response.data :", response.data);
         this.setState({ images: response.data.images, loading: false });
