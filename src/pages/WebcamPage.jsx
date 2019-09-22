@@ -109,6 +109,10 @@ class WebcamPage extends Component {
         ) : (
           <div className={classes.root}>
             <Container align="center">
+              <Typography>
+                MetScope is having a few issues this week. Rest assured these
+                are being worked on. Thanks for your patience.
+              </Typography>
               <span style={{ fontSize: 18, paddingRight: 15 }}>
                 Viewing webcams for: {_.startCase(this.state.area)}
               </span>
