@@ -1,26 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Container,
-  Typography,
-  AppBar,
-  Toolbar,
-  Button,
-  Grid,
-  Box
-} from "@material-ui/core";
+import { Container, Typography, Grid } from "@material-ui/core";
 
 const banner = require("../banner.jpg");
 const logo = require("../logo_white.png");
 
 const HomePage = props => {
   return (
-    <div>
+    <div style={{ width: "100%", height: "calc(100vh - 56px)" }}>
       <div
         style={{
           width: "100%",
-          height: 600,
-          overflow: "hidden",
+          height: "100%",
           backgroundImage: `url(${banner})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat"
@@ -36,7 +27,11 @@ const HomePage = props => {
           >
             <Grid item>
               <Link to="/webcams">
-                <img src={logo} style={{ width: "30%", height: "auto" }} />
+                <img
+                  src={logo}
+                  style={{ width: "30%", height: "auto" }}
+                  alt="logo"
+                />
               </Link>
               <Typography style={{ color: "#fff", fontWeight: "bold" }}>
                 Tap to start
@@ -45,28 +40,6 @@ const HomePage = props => {
           </Grid>
         </Container>
       </div>
-      <Container align="center" style={{ marginTop: 40 }}>
-        <Typography gutterBottom variant="h3">
-          MetScope (beta)
-        </Typography>
-        <Box style={{ marginBottom: 30 }}>
-          <Typography gutterBottom variant="body">
-            Your single source of weather for Milford Sound and beyond
-          </Typography>
-        </Box>
-        {/* <Button
-          variant="contained"
-          color="primary"
-          onClick={() => loginWithRedirect({})}
-        >
-          Sign Up
-        </Button> */}
-        <Link to="/webcams">
-          <Button variant="contained" color="primary">
-            Start
-          </Button>
-        </Link>
-      </Container>
     </div>
   );
 };
