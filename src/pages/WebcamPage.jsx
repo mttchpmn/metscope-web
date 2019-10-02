@@ -7,7 +7,8 @@ import {
   Grid,
   Typography,
   ButtonBase,
-  IconButton
+  IconButton,
+  Button
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -56,43 +57,31 @@ class WebcamPage extends Component {
   }
 
   areaSelector() {
-    const imgLookup = {
-      clyde: clydeImg,
-      windward: windwardImg,
-      fiords: fiordsImg,
-      alps: alpsImg,
-      gore: goreImg
-    };
-    const button = area => (
-      <Grid item xs={12} sm={6} onClick={() => this.setState({ area })}>
-        <ButtonBase
-          focusRipple
-          style={{
-            // backgroundColor: "red",
-            padding: 10,
-            height: 200,
-            width: 600,
-            alignContent: "center",
-            backgroundImage: `url(${imgLookup[area]})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center 80%",
-            backgroundSize: "cover"
-          }}
-        >
-          <Typography style={{ color: "#fff", fontSize: 28 }} align="center">
-            {_.startCase(area)}
-          </Typography>
-        </ButtonBase>
-      </Grid>
+    const selectButton = area => (
+      <Button
+        onClick={() => this.setState({ area })}
+        style={{
+          padding: 10,
+          margin: 5,
+          height: 70,
+          width: "100%",
+          alignContent: "center",
+          backgroundColor: "#00BCD4"
+        }}
+      >
+        <Typography style={{ color: "#fff", fontSize: 28 }} align="center">
+          {_.startCase(area)}
+        </Typography>
+      </Button>
     );
     return (
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{ marginTop: 20 }}>
         <Grid container spacing={2} justify="center">
-          {button("clyde")}
-          {button("windward")}
-          {button("alps")}
-          {button("fiords")}
-          {button("gore")}
+          {selectButton("clyde")}
+          {selectButton("windward")}
+          {selectButton("alps")}
+          {selectButton("fiords")}
+          {selectButton("gore")}
         </Grid>
       </Container>
     );
