@@ -22,7 +22,7 @@ class QmugPage extends Component {
   }
 
   componentDidMount() {
-    Axios.get(`${config.API_ADDRESS}/weather/scrape/qmug`).then(response => {
+    Axios.get(`${config.API_ADDRESS}/data/weather/load/qmug`).then(response => {
       this.setState({
         metar: response.data.data.metar,
         aaw: response.data.data.aaw,
@@ -37,7 +37,7 @@ class QmugPage extends Component {
 
   render() {
     return (
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" style={{ marginTop: 20 }}>
         {this.state.loading ? (
           <LoadingSpinner />
         ) : (
