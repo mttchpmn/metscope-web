@@ -35,7 +35,12 @@ const HomePage = props => {
             style={{ width: "100%", height: "100%" }}
           >
             <Grid item>
-              <img src={logo} style={{ width: "30%", height: "auto" }} />
+              <Link to="/webcams">
+                <img src={logo} style={{ width: "30%", height: "auto" }} />
+              </Link>
+              <Typography style={{ color: "#fff", fontWeight: "bold" }}>
+                Tap to start
+              </Typography>
             </Grid>
           </Grid>
         </Container>
