@@ -50,7 +50,11 @@ class QmugPage extends Component {
             <Grid item xs={12} md={4} xl={3}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <QmugViewer name="METAR" dataArray={this.state.metar} />
+                  <QmugViewer
+                    responsive
+                    name="METAR"
+                    dataArray={this.state.metar}
+                  />
                 </Grid>
                 <Grid item xs={12}>
                   <QmugViewer name="AAW" dataArray={this.state.aaw} />
@@ -61,14 +65,14 @@ class QmugPage extends Component {
             <Grid item xs={12} md={4} xl={3}>
               <QmugViewer name="TAF" dataArray={this.state.taf} />
             </Grid>
-            <Grid item xs={12} md={4} xl={3}>
+            {/* <Grid item xs={12} md={4} xl={3}>
               <ImageCard
                 title="Images"
                 images={this.state.grafor
                   .concat(this.state.sigmet)
                   .concat(this.state.sigwx)}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         )}
       </Container>
