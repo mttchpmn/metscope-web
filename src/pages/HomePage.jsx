@@ -10,13 +10,10 @@ import {
   Box
 } from "@material-ui/core";
 
-import { useAuth0 } from "../react-auth0-wrapper";
-
 const banner = require("../banner.jpg");
 const logo = require("../logo_white.png");
 
 const HomePage = props => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   return (
     <div>
       <div
