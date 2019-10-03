@@ -10,6 +10,7 @@ import FlightIcon from "@material-ui/icons/Flight";
 import PhotoIcon from "@material-ui/icons/Photo";
 import PublicIcon from "@material-ui/icons/Public";
 
+import DataWrapper from "./DataWrapper";
 import WebcamPage from "./pages/WebcamPage";
 import QmugPage from "./pages/QmugPage";
 import HomePage from "./pages/HomePage";
@@ -102,13 +103,14 @@ class App extends React.Component {
               </div> */}
 
             {/* <div>{JSON.stringify(user)}</div> */}
-
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/select" component={AreaSelectPage} />
-            <Route exact path="/webcams" component={WebcamPage} />
-            <Route exact path="/metvuw" component={MetvuwPage} />
-            <Route exact path="/windy" component={WindyPage} />
-            <Route exact path="/qmug" component={QmugPage} />
+            <DataWrapper>
+              <Route exact path="/select" component={AreaSelectPage} foo="bar" />
+              <Route exact path="/webcams" component={WebcamPage} />
+              <Route exact path="/metvuw" component={MetvuwPage} />
+              <Route exact path="/windy" component={WindyPage} />
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/qmug" component={QmugPage} />
+            </DataWrapper>
           </HashRouter>
         </div>
       </div>

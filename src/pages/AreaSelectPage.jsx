@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 
+import {DataContext} from "../DataWrapper";
+
 const areaMap = require("../area-map.png");
 const areaMapMobile = require("../area-map_mobile.png");
 
@@ -15,6 +17,9 @@ class AreaSelectPage extends Component {
   render() {
     return (
       <Container maxWidth="xl" style={{ marginTop: 20 }}>
+      <Typography style={{fontStyle: "italic"}} align="center">Note: This page is currently under development</Typography>
+      <DataContext.Consumer>
+      {data => (
         <Grid
           container
           justify="center"
@@ -23,9 +28,9 @@ class AreaSelectPage extends Component {
           style={{ width: "100%", height: "100%" }}
         >
           <Grid item>
-            <Typography variant="h6" align="center">
+            {/* <Typography variant="h6" align="center">
               Areas selected:
-            </Typography>
+            </Typography> */}
             <Typography>{}</Typography>
             <img src={areaMapMobile} alt="Areas Map" useMap="#area-map" />
 
@@ -69,6 +74,8 @@ class AreaSelectPage extends Component {
             </map>
           </Grid>
         </Grid>
+      )}
+        </DataContext.Consumer>
       </Container>
     );
   }
