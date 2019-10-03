@@ -17,7 +17,7 @@ import Header from "./components/Header";
 import WindyPage from "./pages/WindyPage";
 import MetvuwPage from "./pages/MetvuwPage";
 
-import { useAuth0 } from "./react-auth0-wrapper";
+import AreaSelectPage from "./pages/AreaSelectPage";
 
 const trackingId = process.env.REACT_APP_TRACKING_ID;
 console.log("trackingId :", trackingId);
@@ -34,8 +34,6 @@ history.listen(location => {
 });
 
 function App() {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-
   return (
     <div className="App">
       <div>
@@ -91,6 +89,7 @@ function App() {
           {/* <div>{JSON.stringify(user)}</div> */}
 
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/select" component={AreaSelectPage} />
           <Route exact path="/webcams" component={WebcamPage} />
           <Route exact path="/metvuw" component={MetvuwPage} />
           <Route exact path="/windy" component={WindyPage} />
