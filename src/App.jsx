@@ -41,6 +41,14 @@ function App() {
           <Header>
             <div>
               <List>
+                <Link to="/select">
+                  <ListItem button>
+                    <ListItemIcon>
+                      <SatelliteIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"Area Select"} />
+                  </ListItem>
+                </Link>
                 <Link to="/webcams">
                   <ListItem button>
                     <ListItemIcon>
