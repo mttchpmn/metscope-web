@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+
+import {DataContext} from "../DataWrapper";
 import LoadingSpinner from "../components/LoadingSpinner";
 import config from "../config";
 import clydeImg from "../images/clyde.jpg";
@@ -76,6 +78,8 @@ class WebcamPage extends Component {
     );
     return (
       <Container maxWidth="lg" style={{ marginTop: 20 }}>
+      <DataContext.Consumer>
+      {data => (
         <Grid container spacing={2} justify="center">
           {selectButton("clyde")}
           {selectButton("windward")}
@@ -83,6 +87,8 @@ class WebcamPage extends Component {
           {selectButton("fiords")}
           {selectButton("gore")}
         </Grid>
+      )}
+        </DataContext.Consumer>
       </Container>
     );
   }
