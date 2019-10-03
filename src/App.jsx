@@ -32,80 +32,88 @@ history.listen(location => {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);
 });
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      areas: []
+    };
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <div>
-        <HashRouter history={history}>
-          <Header>
-            <div>
-              <List>
-                <Link to="/select">
-                  <ListItem button>
-                    <ListItemIcon>
-                      <SatelliteIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"Area Select"} />
-                  </ListItem>
-                </Link>
-                <Link to="/webcams">
-                  <ListItem button>
-                    <ListItemIcon>
-                      <CameraIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"Webcams"} />
-                  </ListItem>
-                </Link>
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <HashRouter history={history}>
+            <Header>
+              <div>
+                <List>
+                  <Link to="/select">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <SatelliteIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"Area Select"} />
+                    </ListItem>
+                  </Link>
+                  <Link to="/webcams">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <CameraIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"Webcams"} />
+                    </ListItem>
+                  </Link>
 
-                <Link to="/metvuw">
-                  <ListItem button>
-                    <ListItemIcon>
-                      <PhotoIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"MetVUW"} />
-                  </ListItem>
-                </Link>
+                  <Link to="/metvuw">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <PhotoIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"MetVUW"} />
+                    </ListItem>
+                  </Link>
 
-                <Link to="/qmug">
-                  <ListItem button>
-                    <ListItemIcon>
-                      <FlightIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"QMUG"} />
-                  </ListItem>
-                </Link>
+                  <Link to="/qmug">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <FlightIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"QMUG"} />
+                    </ListItem>
+                  </Link>
 
-                <Link to="/windy">
-                  <ListItem button>
-                    <ListItemIcon>
-                      <PublicIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={"Windy"} />
-                  </ListItem>
-                </Link>
-              </List>
-            </div>
-          </Header>
+                  <Link to="/windy">
+                    <ListItem button>
+                      <ListItemIcon>
+                        <PublicIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={"Windy"} />
+                    </ListItem>
+                  </Link>
+                </List>
+              </div>
+            </Header>
 
-          {/* <div>
-              {isAuthenticated && (
-                <button onClick={() => logout()}>Log out</button>
-              )}
-            </div> */}
+            {/* <div>
+                {isAuthenticated && (
+                  <button onClick={() => logout()}>Log out</button>
+                )}
+              </div> */}
 
-          {/* <div>{JSON.stringify(user)}</div> */}
+            {/* <div>{JSON.stringify(user)}</div> */}
 
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/select" component={AreaSelectPage} />
-          <Route exact path="/webcams" component={WebcamPage} />
-          <Route exact path="/metvuw" component={MetvuwPage} />
-          <Route exact path="/windy" component={WindyPage} />
-          <Route exact path="/qmug" component={QmugPage} />
-        </HashRouter>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/select" component={AreaSelectPage} />
+            <Route exact path="/webcams" component={WebcamPage} />
+            <Route exact path="/metvuw" component={MetvuwPage} />
+            <Route exact path="/windy" component={WindyPage} />
+            <Route exact path="/qmug" component={QmugPage} />
+          </HashRouter>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
