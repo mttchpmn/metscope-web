@@ -11,12 +11,12 @@ export default class DataWrapper extends React.Component {
     };
 
     this.getAreaList = () => {
-      const nameLookup= {
-        cy: 'Clyde',
-        fd: 'Fiords',
-        ge: 'Gore',
-        al: 'Alps',
-        ww: 'Windward'
+      const nameLookup = {
+        cy: "Clyde",
+        fd: "Fiords",
+        ge: "Gore",
+        al: "Alps",
+        ww: "Windward"
       };
 
       const result = [];
@@ -25,12 +25,17 @@ export default class DataWrapper extends React.Component {
       }
 
       return result;
-    }
-
+    };
 
     this.state = {
       updateProp: this.updateProp,
       getAreaList: this.getAreaList,
+
+      userIsLoggedIn: false,
+      userEmail: "",
+      user: {},
+      userToken: "",
+
       cy: false,
       fd: false,
       ge: false,
@@ -40,7 +45,7 @@ export default class DataWrapper extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <DataContext.Provider value={this.state}>
         {this.props.children}
       </DataContext.Provider>

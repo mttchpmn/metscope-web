@@ -44,75 +44,73 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <HashRouter history={history}>
-            <Header>
-              <div>
-                <List>
-                  <Link to="/select">
-                    <ListItem button>
-                      <ListItemIcon>
-                        <SatelliteIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={"Area Select"} />
-                    </ListItem>
-                  </Link>
-                  <Link to="/webcams">
-                    <ListItem button>
-                      <ListItemIcon>
-                        <CameraIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={"Webcams"} />
-                    </ListItem>
-                  </Link>
+        <DataWrapper>
+          <div>
+            <HashRouter history={history}>
+              <Header>
+                <div>
+                  <List>
+                    <Link to="/select">
+                      <ListItem button>
+                        <ListItemIcon>
+                          <SatelliteIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Area Select"} />
+                      </ListItem>
+                    </Link>
+                    <Link to="/webcams">
+                      <ListItem button>
+                        <ListItemIcon>
+                          <CameraIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Webcams"} />
+                      </ListItem>
+                    </Link>
 
-                  <Link to="/metvuw">
-                    <ListItem button>
-                      <ListItemIcon>
-                        <PhotoIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={"MetVUW"} />
-                    </ListItem>
-                  </Link>
+                    <Link to="/metvuw">
+                      <ListItem button>
+                        <ListItemIcon>
+                          <PhotoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"MetVUW"} />
+                      </ListItem>
+                    </Link>
 
-                  <Link to="/qmug">
-                    <ListItem button>
-                      <ListItemIcon>
-                        <FlightIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={"QMUG"} />
-                    </ListItem>
-                  </Link>
+                    <Link to="/qmug">
+                      <ListItem button>
+                        <ListItemIcon>
+                          <FlightIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"QMUG"} />
+                      </ListItem>
+                    </Link>
 
-                  <Link to="/windy">
-                    <ListItem button>
-                      <ListItemIcon>
-                        <PublicIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={"Windy"} />
-                    </ListItem>
-                  </Link>
-                </List>
-              </div>
-            </Header>
+                    <Link to="/windy">
+                      <ListItem button>
+                        <ListItemIcon>
+                          <PublicIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Windy"} />
+                      </ListItem>
+                    </Link>
+                  </List>
+                </div>
+              </Header>
 
-            {/* <div>
-                {isAuthenticated && (
-                  <button onClick={() => logout()}>Log out</button>
-                )}
-              </div> */}
-
-            {/* <div>{JSON.stringify(user)}</div> */}
-            <DataWrapper>
-              <Route exact path="/select" component={AreaSelectPage} foo="bar" />
+              <Route
+                exact
+                path="/select"
+                component={AreaSelectPage}
+                foo="bar"
+              />
               <Route exact path="/webcams" component={WebcamPage} />
               <Route exact path="/metvuw" component={MetvuwPage} />
               <Route exact path="/windy" component={WindyPage} />
               <Route exact path="/" component={HomePage} />
               <Route exact path="/qmug" component={QmugPage} />
-            </DataWrapper>
-          </HashRouter>
-        </div>
+            </HashRouter>
+          </div>
+        </DataWrapper>
       </div>
     );
   }
