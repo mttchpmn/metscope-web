@@ -14,6 +14,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 
 import { DataContext } from "../DataWrapper";
+import LoginModal from "./LoginModal";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = props => {
   const classes = useStyles();
+  const [modalVisible, toggleModal] = React.useState(false);
   const [state, setState] = React.useState({
     drawerOpen: false
   });
@@ -37,17 +39,6 @@ const Header = props => {
 
   const closeDrawer = () => {
     setState({ ...state, drawerOpen: false });
-  };
-
-  const [modalVisible, toggleModal] = React.useState(false);
-
-  const [values, setValues] = React.useState({
-    email: "",
-    password: ""
-  });
-
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
   };
 
   const loginLogoutButton = () => {
@@ -68,42 +59,10 @@ const Header = props => {
     );
   };
 
-  const loginModal = () => {
-    return (
-      <Dialog fullscreen open={modalVisible} onClose={() => toggleModal(false)}>
-        <DataContext.Consumer>
-          {data => (
-            <Container align="center">
-              <Typography>Login to MetScope</Typography>
-              <div>
-                <TextField
-                  id="email"
-                  label="Email"
-                  value={values.email}
-                  onChange={handleChange("email")}
-                />
-              </div>
-              <div>
-                <TextField
-                  id="password"
-                  label="Password"
-                  value={values.password}
-                  onChange={handleChange("password")}
-                />
-              </div>
-              <div>
-                <Button onClick={() => console.log(values)}>Login</Button>
-              </div>
-            </Container>
-          )}
-        </DataContext.Consumer>
-      </Dialog>
-    );
-  };
-
   return (
     <div>
-      {loginModal()}
+      <LoginModal visible={modalVisible} onExit={() => toggleModal(false)} />
+
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <IconButton edge="start" onClick={() => openDrawer()}>
