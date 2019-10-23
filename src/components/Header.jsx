@@ -9,7 +9,8 @@ import {
   makeStyles,
   Drawer,
   Dialog,
-  TextField
+  TextField,
+  Link
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -50,9 +51,11 @@ const Header = props => {
               Log Out
             </Button>
           ) : (
-            <Button color="inherit" onClick={() => toggleModal(true)}>
-              Log In
-            </Button>
+            <Link to="/login">
+              <Button color="inherit" onClick={() => toggleModal(true)}>
+                Log In
+              </Button>
+            </Link>
           )
         }
       </DataContext.Consumer>

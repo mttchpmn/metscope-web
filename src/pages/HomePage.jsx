@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Typography, Grid } from "@material-ui/core";
+import { Container, Typography, Grid, Button } from "@material-ui/core";
 
 const banner = require("../banner.jpg");
 const logo = require("../logo_white.png");
@@ -33,9 +33,20 @@ const HomePage = props => {
                   alt="logo"
                 />
               </Link>
-              <Typography style={{ color: "#fff", fontWeight: "bold" }}>
+              {/* <Typography style={{ color: "#fff", fontWeight: "bold" }}>
                 Tap to start
-              </Typography>
+              </Typography> */}
+              <Grid item>
+                <Link to="/login">
+                  <Button
+                    variant="contained"
+                    color="inherit"
+                    onClick={() => console.log("Login clicked")}
+                  >
+                    Log In
+                  </Button>
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
         </Container>

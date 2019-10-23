@@ -1,34 +1,51 @@
 import React from "react";
 import {
-  AppBar,
   Button,
   Container,
-  Toolbar,
-  IconButton,
   Typography,
-  makeStyles,
-  Drawer,
   Dialog,
   TextField
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import Axios from "axios";
 
 import { DataContext } from "../DataWrapper";
+import config from "../config";
 
 const LoginModal = ({ visible, onExit }) => {
   const [modalVisible, toggleModal] = React.useState(visible);
-
+  const [loading, setLoading] = React.useState(false);
   const [values, setValues] = React.useState({
     email: "",
     password: ""
   });
+  const [token, setToken] = React.useState(null);
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
 
+  const makeLoginRequest = () => {
+    console.log("Attempting login...");
+
+    Axios({
+      method: "post",
+      url: `${config.API_ADDRESS}/auth/login`,
+      data: {
+        email: values.email,
+        password: values.password
+      }
+    }).then(res => {
+      console.log(res.status);
+      console.log(res.data);
+      if (res.status === 200) {
+        console.log("Login successful");
+        setToken(res.data.token);
+      }
+    });
+  };
+
   return (
-    <Dialog fullscreen open={visible} onClose={() => onExit()}>
+    <Dialog open={visible} onClose={() => onExit()}>
       <DataContext.Consumer>
         {data => (
           <Container align="center">
@@ -45,12 +62,13 @@ const LoginModal = ({ visible, onExit }) => {
               <TextField
                 id="password"
                 label="Password"
+                type="password"
                 value={values.password}
                 onChange={handleChange("password")}
               />
             </div>
             <div>
-              <Button onClick={() => console.log(values)}>Login</Button>
+              <Button onClick={() => makeLoginRequest()}>Login</Button>
             </div>
           </Container>
         )}

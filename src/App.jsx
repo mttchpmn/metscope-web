@@ -19,6 +19,7 @@ import WindyPage from "./pages/WindyPage";
 import MetvuwPage from "./pages/MetvuwPage";
 
 import AreaSelectPage from "./pages/AreaSelectPage";
+import LoginPage from "./pages/LoginPage";
 
 const trackingId = process.env.REACT_APP_TRACKING_ID;
 console.log("trackingId :", trackingId);
@@ -97,6 +98,7 @@ class App extends React.Component {
                 </div>
               </Header>
 
+              <Route exact path="/login" component={LoginPage} />
               <Route
                 exact
                 path="/select"
