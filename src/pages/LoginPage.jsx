@@ -12,7 +12,6 @@ const LoginPage = props => {
     email: "",
     password: ""
   });
-  const [token, setToken] = React.useState("TOKEN_NOT_SET");
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
@@ -31,21 +30,13 @@ const LoginPage = props => {
       }
     });
 
-    console.log(res.status);
-    console.log(res.data);
-
     if (res.status === 200) {
       console.log("Login successful");
-      console.log("res.data.token :", res.data.token);
-      setToken(res.data.token);
-      console.log("token :", token);
+      console.log("token :", res.data.token);
       setLoading(false);
       return res.data.token;
     }
-  };
-
-  const saveTokenToContext = context => {
-    return context.updateProp("userToken", token);
+    console.error("Login failed");
   };
 
   return (
@@ -81,8 +72,6 @@ const LoginPage = props => {
                 <Button
                   onClick={async () => {
                     const token = await makeLoginRequest();
-                    console.log("TOKEN2: ", token);
-                    // saveTokenToContext(data, token);
                     data.updateProp("userToken", token);
                     props.history.push("/select");
                   }}
