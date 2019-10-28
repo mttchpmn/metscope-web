@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Typography,
-  Dialog,
-  TextField
-} from "@material-ui/core";
+import { Button, Container, Typography, TextField } from "@material-ui/core";
 import Axios from "axios";
-import { Redirect } from "react-router-dom";
 
 import { DataContext } from "../DataWrapper";
 import config from "../config";
@@ -19,35 +12,36 @@ const LoginPage = props => {
     email: "",
     password: ""
   });
-  const [token, setToken] = React.useState("foo");
+  const [token, setToken] = React.useState("TOKEN_NOT_SET");
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const makeLoginRequest = () => {
+  const makeLoginRequest = async () => {
     setLoading(true);
     console.log("Attempting login...");
 
-    Axios({
+    const res = await Axios({
       method: "post",
       url: `${config.API_ADDRESS}/auth/login`,
       data: {
         email: values.email,
         password: values.password
       }
-    }).then(res => {
-      console.log(res.status);
-      console.log(res.data);
-      if (res.status === 200) {
-        console.log("Login successful");
-        console.log("res.data.token :", res.data.token);
-        // setToken(res.data.token);
-        console.log("token :", token);
-        setLoading(false);
-        return res.data.token;
-      }
     });
+
+    console.log(res.status);
+    console.log(res.data);
+
+    if (res.status === 200) {
+      console.log("Login successful");
+      console.log("res.data.token :", res.data.token);
+      setToken(res.data.token);
+      console.log("token :", token);
+      setLoading(false);
+      return res.data.token;
+    }
   };
 
   const saveTokenToContext = context => {
@@ -85,10 +79,11 @@ const LoginPage = props => {
               </div>
               <div>
                 <Button
-                  onClick={() => {
-                    const token = makeLoginRequest();
-                    console.log(token);
-                    saveTokenToContext(data, token);
+                  onClick={async () => {
+                    const token = await makeLoginRequest();
+                    console.log("TOKEN2: ", token);
+                    // saveTokenToContext(data, token);
+                    data.updateProp("userToken", token);
                     props.history.push("/select");
                   }}
                 >
