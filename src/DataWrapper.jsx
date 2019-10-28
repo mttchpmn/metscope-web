@@ -34,7 +34,7 @@ export default class DataWrapper extends React.Component {
       userIsLoggedIn: false,
       userEmail: "",
       user: {},
-      userToken: "",
+      userToken: localStorage.getItem("userToken") || "",
 
       cy: false,
       fd: false,
