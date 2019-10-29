@@ -33,17 +33,14 @@ const HomePage = props => {
                   alt="logo"
                 />
               </Link>
-              {/* <Typography style={{ color: "#fff", fontWeight: "bold" }}>
-                Tap to start
-              </Typography> */}
               <Grid item>
-                <Link to="/login">
+                <Link to="/signup">
                   <Button
                     variant="contained"
                     color="inherit"
-                    onClick={() => console.log("Login clicked")}
+                    onClick={() => console.log("Signup clicked")}
                   >
-                    Log In
+                    Sign Up
                   </Button>
                 </Link>
               </Grid>
