@@ -19,6 +19,10 @@ const SignupPage = props => {
     setValues({ ...values, [name]: event.target.value });
   };
 
+  const emailIsValid = email => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
   const makeSignupRequest = async () => {
     setLoading(true);
     console.log("Attempting to create new user");
@@ -59,49 +63,52 @@ const SignupPage = props => {
           ) : (
             <Container align="center">
               <Typography>Signup to MetScope</Typography>
-              <div>
-                <TextField
-                  id="firstName"
-                  label="First Name"
-                  value={values.firstName}
-                  onChange={handleChange("firstName")}
-                />
-              </div>
-              <div>
-                <TextField
-                  id="lastName"
-                  label="Last Name"
-                  value={values.lastName}
-                  onChange={handleChange("lastName")}
-                />
-              </div>
-              <div>
-                <TextField
-                  id="email"
-                  label="Email"
-                  value={values.email}
-                  onChange={handleChange("email")}
-                />
-              </div>
-              <div>
-                <TextField
-                  id="password"
-                  label="Password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange("password")}
-                />
-              </div>
-              <div>
-                <Button
-                  onClick={async () => {
-                    const token = await makeSignupRequest();
-                    props.history.push("/login");
-                  }}
-                >
-                  Sign Up
-                </Button>
-              </div>
+              <form>
+                <div>
+                  <TextField
+                    id="firstName"
+                    label="First Name"
+                    value={values.firstName}
+                    onChange={handleChange("firstName")}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="lastName"
+                    label="Last Name"
+                    value={values.lastName}
+                    onChange={handleChange("lastName")}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="email"
+                    label="Email"
+                    value={values.email}
+                    onChange={handleChange("email")}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    id="password"
+                    label="Password"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange("password")}
+                  />
+                </div>
+                <div>
+                  <Button
+                    type="submit"
+                    onClick={async () => {
+                      const token = await makeSignupRequest();
+                      props.history.push("/login");
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+              </form>
             </Container>
           )
         }
