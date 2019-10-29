@@ -73,6 +73,7 @@ const LoginPage = props => {
                   onClick={async () => {
                     const token = await makeLoginRequest();
                     data.updateProp("userToken", token);
+                    data.updateProp("userIsLoggedIn", true);
                     localStorage.setItem("userToken", token);
                     props.history.push("/select");
                   }}

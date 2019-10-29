@@ -47,15 +47,21 @@ const Header = props => {
       <DataContext.Consumer>
         {data =>
           data.userIsLoggedIn ? (
-            <Button color="inherit" onClick={() => console.log("Log OUT")}>
+            <Button
+              color="inherit"
+              onClick={() => {
+                console.log("Logging out...");
+                localStorage.removeItem("userToken");
+                data.updateProp("userIsLoggedIn", false);
+                window.location.reload();
+              }}
+            >
               Log Out
             </Button>
           ) : (
-            <Link to="/login">
-              <Button color="inherit" onClick={() => toggleModal(true)}>
-                Log In
-              </Button>
-            </Link>
+            <Button color="inherit" onClick={() => toggleModal(true)}>
+              Log In
+            </Button>
           )
         }
       </DataContext.Consumer>
