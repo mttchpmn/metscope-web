@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
-import {DataContext} from "../DataWrapper";
+import { DataContext } from "../DataWrapper";
 import LoadingSpinner from "../components/LoadingSpinner";
 import config from "../config";
 import clydeImg from "../images/clyde.jpg";
@@ -22,6 +22,7 @@ import windwardImg from "../images/windward.jpg";
 import goreImg from "../images/gore.jpg";
 import alpsImg from "../images/alps.jpg";
 import CloseIcon from "@material-ui/icons/Close";
+import SecurePage from "../components/SecurePage";
 
 const styles = {
   root: {
@@ -77,19 +78,21 @@ class WebcamPage extends Component {
       </Button>
     );
     return (
-      <Container maxWidth="lg" style={{ marginTop: 20 }}>
-      <DataContext.Consumer>
-      {data => (
-        <Grid container spacing={2} justify="center">
-          {selectButton("clyde")}
-          {selectButton("windward")}
-          {selectButton("alps")}
-          {selectButton("fiords")}
-          {selectButton("gore")}
-        </Grid>
-      )}
-        </DataContext.Consumer>
-      </Container>
+      <SecurePage>
+        <Container maxWidth="lg" style={{ marginTop: 20 }}>
+          <DataContext.Consumer>
+            {data => (
+              <Grid container spacing={2} justify="center">
+                {selectButton("clyde")}
+                {selectButton("windward")}
+                {selectButton("alps")}
+                {selectButton("fiords")}
+                {selectButton("gore")}
+              </Grid>
+            )}
+          </DataContext.Consumer>
+        </Container>
+      </SecurePage>
     );
   }
 
@@ -98,35 +101,37 @@ class WebcamPage extends Component {
     if (!this.state.area) return this.areaSelector();
 
     return (
-      <Container maxWidth="xl">
-        {this.state.loading ? (
-          <LoadingSpinner />
-        ) : (
-          <div className={classes.root}>
-            <Container align="center">
-              <span style={{ fontSize: 18, paddingRight: 15 }}>
-                Viewing webcams for: {_.startCase(this.state.area)}
-              </span>
-              <IconButton onClick={() => this.setState({ area: null })}>
-                <CloseIcon />
-              </IconButton>
-            </Container>
+      <SecurePage>
+        <Container maxWidth="xl">
+          {this.state.loading ? (
+            <LoadingSpinner />
+          ) : (
+            <div className={classes.root}>
+              <Container align="center">
+                <span style={{ fontSize: 18, paddingRight: 15 }}>
+                  Viewing webcams for: {_.startCase(this.state.area)}
+                </span>
+                <IconButton onClick={() => this.setState({ area: null })}>
+                  <CloseIcon />
+                </IconButton>
+              </Container>
 
-            <Grid container spacing={2}>
-              {this.state[this.state.area].map((camObj, index) => {
-                // Don't try and generate a Webcam Viewer if we don't have any images to show
-                if (camObj.images && camObj.images.length) {
-                  return (
-                    <Grid key={camObj.name} item xs={12} sm={6} md={4} lg={3}>
-                      <WebcamViewer webcam={camObj} />
-                    </Grid>
-                  );
-                }
-              })}
-            </Grid>
-          </div>
-        )}
-      </Container>
+              <Grid container spacing={2}>
+                {this.state[this.state.area].map((camObj, index) => {
+                  // Don't try and generate a Webcam Viewer if we don't have any images to show
+                  if (camObj.images && camObj.images.length) {
+                    return (
+                      <Grid key={camObj.name} item xs={12} sm={6} md={4} lg={3}>
+                        <WebcamViewer webcam={camObj} />
+                      </Grid>
+                    );
+                  }
+                })}
+              </Grid>
+            </div>
+          )}
+        </Container>
+      </SecurePage>
     );
   }
 }

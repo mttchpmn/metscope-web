@@ -32,7 +32,7 @@ class AreaSelectPage extends Component {
                 <Grid item>
                   <Typography variant="h6" align="center">
                     Areas selected:
-                    {JSON.stringify(data)}
+                    {/* {JSON.stringify(data)} */}
                   </Typography>
                   <Typography>{data.getAreaList().join(", ")}</Typography>
                   <img src={areaMapMobile} alt="Areas Map" useMap="#area-map" />

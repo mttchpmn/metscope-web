@@ -51,8 +51,10 @@ const Header = props => {
               color="inherit"
               onClick={() => {
                 console.log("Logging out...");
-                localStorage.removeItem("userToken");
+                localStorage.removeItem("userIsLoggedIn");
                 data.updateProp("userIsLoggedIn", false);
+                localStorage.removeItem("userToken");
+                data.updateProp("userToken", null);
                 window.location.reload();
               }}
             >

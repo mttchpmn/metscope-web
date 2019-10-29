@@ -11,7 +11,7 @@ import Axios from "axios";
 import { DataContext } from "../DataWrapper";
 import config from "../config";
 
-const LoginModal = ({ visible, onExit }) => {
+const LoginModal = ({ visible, onExit, history }) => {
   const [modalVisible, toggleModal] = React.useState(visible);
   const [loading, setLoading] = React.useState(false);
   const [values, setValues] = React.useState({
@@ -24,24 +24,25 @@ const LoginModal = ({ visible, onExit }) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const makeLoginRequest = () => {
+  const makeLoginRequest = async () => {
     console.log("Attempting login...");
 
-    Axios({
+    const res = await Axios({
       method: "post",
       url: `${config.API_ADDRESS}/auth/login`,
       data: {
         email: values.email,
         password: values.password
       }
-    }).then(res => {
-      console.log(res.status);
-      console.log(res.data);
-      if (res.status === 200) {
-        console.log("Login successful");
-        setToken(res.data.token);
-      }
     });
+
+    console.log(res.status);
+    console.log(res.data);
+
+    if (res.status === 200) {
+      console.log("Login successful");
+      setToken(res.data.token);
+    }
   };
 
   return (
@@ -68,7 +69,18 @@ const LoginModal = ({ visible, onExit }) => {
               />
             </div>
             <div>
-              <Button onClick={() => makeLoginRequest()}>Login</Button>
+              <Button
+                onClick={async () => {
+                  await makeLoginRequest();
+                  data.updateProp("userToken", token);
+                  data.updateProp("userIsLoggedIn", true);
+                  localStorage.setItem("userToken", token);
+                  localStorage.setItem("userIsLoggedIn", true);
+                  window.location.reload();
+                }}
+              >
+                Login
+              </Button>
             </div>
           </Container>
         )}
