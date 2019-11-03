@@ -31,10 +31,11 @@ export default class DataWrapper extends React.Component {
       updateProp: this.updateProp,
       getAreaList: this.getAreaList,
 
-      userIsLoggedIn: localStorage.getItem("userIsLoggedIn") || false,
-      userToken: localStorage.getItem("userToken") || "",
-      userEmail: "",
-      user: {},
+      userIsLoggedIn: this.getProp("userIsLoggedIn", false),
+      userToken: this.getProp("userToken"),
+      userFirstName: this.getProp("userFirstName"),
+      userLastName: this.getProp("userLastName"),
+      userEmail: this.getProp("userEmail"),
 
       cy: false,
       fd: false,
@@ -42,6 +43,10 @@ export default class DataWrapper extends React.Component {
       al: false,
       ww: false
     };
+  }
+
+  getProp(propName, defaultValue = null) {
+    return localStorage.getItem(propName) || defaultValue;
   }
 
   render() {
