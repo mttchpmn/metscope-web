@@ -6,10 +6,9 @@ import {
   Dialog,
   TextField
 } from "@material-ui/core";
-import Axios from "axios";
 
 import { DataContext } from "../DataWrapper";
-import config from "../config";
+import { makeLoginRequest } from "../logic/auth";
 
 const LoginModal = ({ visible, onExit, history }) => {
   const [modalVisible, toggleModal] = React.useState(visible);
@@ -18,31 +17,9 @@ const LoginModal = ({ visible, onExit, history }) => {
     email: "",
     password: ""
   });
-  const [token, setToken] = React.useState(null);
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
-  };
-
-  const makeLoginRequest = async () => {
-    console.log("Attempting login...");
-
-    const res = await Axios({
-      method: "post",
-      url: `${config.API_ADDRESS}/auth/login`,
-      data: {
-        email: values.email,
-        password: values.password
-      }
-    });
-
-    console.log(res.status);
-    console.log(res.data);
-
-    if (res.status === 200) {
-      console.log("Login successful");
-      setToken(res.data.token);
-    }
   };
 
   return (
@@ -71,12 +48,7 @@ const LoginModal = ({ visible, onExit, history }) => {
             <div>
               <Button
                 onClick={async () => {
-                  await makeLoginRequest();
-                  data.updateProp("userToken", token);
-                  data.updateProp("userIsLoggedIn", true);
-                  localStorage.setItem("userToken", token);
-                  localStorage.setItem("userIsLoggedIn", true);
-                  window.location.reload();
+                  await makeLoginRequest(data, values.email, values.password);
                 }}
               >
                 Login
