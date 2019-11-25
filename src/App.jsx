@@ -2,7 +2,6 @@ import React from "react";
 import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
 import { HashRouter, Route, Link } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import CameraIcon from "@material-ui/icons/CameraAlt";
 import SatelliteIcon from "@material-ui/icons/Satellite";
@@ -104,7 +103,12 @@ class App extends React.Component {
 
             {/* <div>{JSON.stringify(user)}</div> */}
             <DataWrapper>
-              <Route exact path="/select" component={AreaSelectPage} foo="bar" />
+              <Route
+                exact
+                path="/select"
+                component={AreaSelectPage}
+                foo="bar"
+              />
               <Route exact path="/webcams" component={WebcamPage} />
               <Route exact path="/metvuw" component={MetvuwPage} />
               <Route exact path="/windy" component={WindyPage} />
