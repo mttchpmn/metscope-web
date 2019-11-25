@@ -6,7 +6,6 @@ import {
   Container,
   Grid,
   Typography,
-  ButtonBase,
   IconButton,
   Button
 } from "@material-ui/core";
@@ -16,11 +15,6 @@ import { withStyles } from "@material-ui/core/styles";
 import { DataContext } from "../DataWrapper";
 import LoadingSpinner from "../components/LoadingSpinner";
 import config from "../config";
-import clydeImg from "../images/clyde.jpg";
-import fiordsImg from "../images/fiords.jpg";
-import windwardImg from "../images/windward.jpg";
-import goreImg from "../images/gore.jpg";
-import alpsImg from "../images/alps.jpg";
 import CloseIcon from "@material-ui/icons/Close";
 
 const styles = {
