@@ -40,7 +40,7 @@ const FullScreenDialog = props => {
   const classes = useStyles();
   return (
     <Dialog fullScreen open={props.open} onClose={() => props.onClose()}>
-      <AppBar className={classes.appBar}>
+      <AppBar className={classes.appBar} style={{height: 56}}>
         <Toolbar>
           <IconButton
             edge="start"

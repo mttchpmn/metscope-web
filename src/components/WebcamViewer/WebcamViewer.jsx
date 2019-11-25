@@ -6,14 +6,11 @@ import {
   CardHeader,
   IconButton,
   Container,
-  Paper,
   Card,
   CardActionArea,
   CardActions,
-  CardContent,
   CardMedia,
-  Typography,
-  Divider
+  Typography
 } from "@material-ui/core";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
@@ -30,7 +27,7 @@ const styles = {
   card: {
     // height: 650
     height: 600,
-    minWidth: 450,
+    minWidth: 450
   },
   bigCard: {
     // height: "90vh"
@@ -157,7 +154,10 @@ class WebcamViewer extends Component {
           open={this.state.fullScreen}
           onClose={() => this.handleClose()}
         >
-          <Card className={classes.bigCard}>
+          <Card
+            className={classes.bigCard}
+            style={{ height: "calc(100vh - 56px)" }}
+          >
             <CardHeader title={webcam.title} />
             <CardActionArea onClick={() => this.handleOpen(webcam.title)}>
               <CardMedia
