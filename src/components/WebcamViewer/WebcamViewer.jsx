@@ -29,7 +29,8 @@ const moment = require("moment");
 const styles = {
   card: {
     // height: 650
-    height: 600
+    height: 600,
+    minWidth: 450,
   },
   bigCard: {
     // height: "90vh"

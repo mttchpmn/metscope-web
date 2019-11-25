@@ -13,7 +13,7 @@ import {
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
-import {DataContext} from "../DataWrapper";
+import { DataContext } from "../DataWrapper";
 import LoadingSpinner from "../components/LoadingSpinner";
 import config from "../config";
 import clydeImg from "../images/clyde.jpg";
@@ -78,16 +78,16 @@ class WebcamPage extends Component {
     );
     return (
       <Container maxWidth="lg" style={{ marginTop: 20 }}>
-      <DataContext.Consumer>
-      {data => (
-        <Grid container spacing={2} justify="center">
-          {selectButton("clyde")}
-          {selectButton("windward")}
-          {selectButton("alps")}
-          {selectButton("fiords")}
-          {selectButton("gore")}
-        </Grid>
-      )}
+        <DataContext.Consumer>
+          {data => (
+            <Grid container spacing={2} justify="center">
+              {selectButton("clyde")}
+              {selectButton("windward")}
+              {selectButton("alps")}
+              {selectButton("fiords")}
+              {selectButton("gore")}
+            </Grid>
+          )}
         </DataContext.Consumer>
       </Container>
     );
@@ -117,7 +117,15 @@ class WebcamPage extends Component {
                 // Don't try and generate a Webcam Viewer if we don't have any images to show
                 if (camObj.images && camObj.images.length) {
                   return (
-                    <Grid key={camObj.name} item xs={12} sm={6} md={4} lg={3}>
+                    <Grid
+                      key={camObj.name}
+                      item
+                      xs={12}
+                      sm={12}
+                      md={6}
+                      lg={4}
+                      xl={3}
+                    >
                       <WebcamViewer webcam={camObj} />
                     </Grid>
                   );
