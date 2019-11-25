@@ -25,20 +25,18 @@ const moment = require("moment");
 
 const styles = {
   card: {
-    // height: 650
     height: 600,
     minWidth: 450
   },
   bigCard: {
-    // height: "90vh"
+    height: "calc(100vh - 56px)"
   },
   media: {
     width: "100%",
     maxHeight: 400
   },
   bigMedia: {
-    // width: "90%"
-    maxHeight: 700,
+    maxHeight: "calc(100vh - 235px)",
     width: "auto"
   },
   appBar: {
@@ -156,14 +154,13 @@ class WebcamViewer extends Component {
         >
           <Card
             className={classes.bigCard}
-            style={{ height: "calc(100vh - 56px)" }}
           >
             <CardHeader title={webcam.title} />
             <CardActionArea onClick={() => this.handleOpen(webcam.title)}>
               <CardMedia
                 className={classes.bigMedia}
                 component="img"
-                height="100%"
+                height="10%"
                 src={webcam.images[this.state.index].url}
                 key={webcam.images[this.state.index].url}
                 title={webcam.title}
