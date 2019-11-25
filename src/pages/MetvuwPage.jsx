@@ -69,10 +69,10 @@ class MetvuwPage extends Component {
           open={this.state.dialogOpen}
           onClose={() => this.setState({ dialogOpen: false })}
         >
-          <Card>
+          <Card style={{ height: "calc(100vh - 64px)" }}>
             <CardMedia
               component="img"
-              height={"90%"}
+              height={"100%"}
               src={this.state.images[this.state.index]}
             />
           </Card>
@@ -92,7 +92,11 @@ class MetvuwPage extends Component {
                           this.setState({ index: index, dialogOpen: true })
                         }
                       >
-                        <CardMedia component="img" height="300" src={img} />
+                        <CardMedia
+                          component="img"
+                          height="calc(100vh - 56px)"
+                          src={img}
+                        />
                       </CardActionArea>
                     </Card>
                   </Grid>
