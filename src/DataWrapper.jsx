@@ -54,6 +54,13 @@ export default class DataWrapper extends React.Component {
       userLastName: this.getProp("userLastName"),
       userEmail: this.getProp("userEmail"),
 
+      // Data utilities
+      loading: false, // Are we in the process of fetching from API
+      dataLoaded: false, // Do we have data fetched and saved already
+      webcams: {},
+      brief: {},
+      metvuw: [],
+
       // Area selection
       fn: false,
       ta: false,
