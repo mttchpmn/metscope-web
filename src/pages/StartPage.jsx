@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 
 import { DataContext } from "../DataWrapper";
@@ -17,9 +18,6 @@ class StartPage extends Component {
     return (
       <SecurePage>
         <Container maxWidth="xl" style={{ marginTop: 20 }}>
-          <Typography style={{ fontStyle: "italic" }} align="center">
-            Note: This page is currently under development
-          </Typography>
           <DataContext.Consumer>
             {data => (
               <Grid
@@ -30,12 +28,15 @@ class StartPage extends Component {
                 style={{ width: "100%", height: "100%" }}
               >
                 <Grid item>
-                  <Typography variant="h6" align="center">
-                    Areas selected:
-                    {/* {JSON.stringify(data)} */}
+                  <Typography variant="h5" align="center">
+                    Select briefing areas
                   </Typography>
-                  <Typography>{data.getAreaList().join(", ")}</Typography>
-                  <img src={areaMap} alt="Areas Map" useMap="#area-map" />
+                  <Typography align="center">
+                    {data.getAreaList().length
+                      ? data.getAreaList().join(", ")
+                      : "Nothing selected"}
+                  </Typography>
+                  <img src={areaMapMobile} alt="Areas Map" useMap="#area-map" />
 
                   <map name="area-map">
                     <area
@@ -90,6 +91,19 @@ class StartPage extends Component {
                       shape="poly"
                     />
                   </map>
+                  <Container>
+                    <Grid item align="center">
+                      <Link to="/briefing">
+                        <Button
+                          variant="contained"
+                          color="inherit"
+                          onClick={() => console.log("Get briefing clicked")}
+                        >
+                          Get Briefing
+                        </Button>
+                      </Link>
+                    </Grid>
+                  </Container>
                 </Grid>
               </Grid>
             )}
