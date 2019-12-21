@@ -5,16 +5,6 @@ import "./index.css";
 import Themer from "./components/Themer";
 import { CssBaseline } from "@material-ui/core";
 
-const onRedirectCalback = appState => {
-  window.history.replaceState(
-    {},
-    document.title,
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
-  );
-};
-
 ReactDOM.render(
   <div>
     <CssBaseline />

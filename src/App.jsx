@@ -2,6 +2,7 @@ import React from "react";
 import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
 import { HashRouter, Route, Link } from "react-router-dom";
+
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import CameraIcon from "@material-ui/icons/CameraAlt";
 import SatelliteIcon from "@material-ui/icons/Satellite";
@@ -10,16 +11,13 @@ import PhotoIcon from "@material-ui/icons/Photo";
 import PublicIcon from "@material-ui/icons/Public";
 
 import DataWrapper from "./DataWrapper";
-import WebcamPage from "./pages/WebcamPage";
-import QmugPage from "./pages/QmugPage";
-import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
-import WindyPage from "./pages/WindyPage";
-import MetvuwPage from "./pages/MetvuwPage";
 
-import AreaSelectPage from "./pages/AreaSelectPage";
-import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import StartPage from "./pages/StartPage";
+import BriefingPage from "./pages/BriefingPage";
 
 const trackingId = process.env.REACT_APP_TRACKING_ID;
 console.log("trackingId :", trackingId);
@@ -100,17 +98,10 @@ class App extends React.Component {
 
               <Route exact path="/signup" component={SignupPage} />
               <Route exact path="/login" component={LoginPage} />
-              <Route
-                exact
-                path="/select"
-                component={AreaSelectPage}
-                foo="bar"
-              />
-              <Route exact path="/webcams" component={WebcamPage} />
-              <Route exact path="/metvuw" component={MetvuwPage} />
-              <Route exact path="/windy" component={WindyPage} />
+
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/qmug" component={QmugPage} />
+              <Route exact path="/start" component={StartPage} />
+              <Route exact path="/briefing" component={BriefingPage} />
             </HashRouter>
           </div>
         </DataWrapper>
