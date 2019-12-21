@@ -14,6 +14,12 @@ import ToysIcon from "@material-ui/icons/Toys";
 import MapIcon from "@material-ui/icons/Map";
 import SatelliteIcon from "@material-ui/icons/Satellite";
 
+import NotamContainer from "./containers/NotamContainer";
+import AerodromeContainer from "./containers/AerodromeContainer";
+import AawContainer from "./containers/AawContainer";
+import ChartContainer from "./containers/ChartContainer";
+import WebcamContainer from "./containers/WebcamContainer";
+import MetvuwContainer from "./containers/MetvuwContainer";
 import config from "../config";
 
 class BriefingPage extends React.Component {
@@ -45,17 +51,14 @@ class BriefingPage extends React.Component {
 
   loadContainer(value) {
     const lookup = {
-      notam: <div>NOTAM PAGE</div>,
-      aerodromes: (
-        <div>
-          AERODROME PAGE<p>{"I will not cheat" * 1000}</p>
-        </div>
-      ),
-      aaw: <div>AAW PAGE</div>,
-      charts: <div>CHARTS PAGE</div>,
-      webcams: <div>WEBCAM PAGE</div>,
-      metvuw: <div>METVUW PAGE</div>
+      notam: <NotamContainer />,
+      aerodromes: <AerodromeContainer />,
+      aaw: <AawContainer />,
+      charts: <ChartContainer />,
+      webcams: <WebcamContainer />,
+      metvuw: <MetvuwContainer />
     };
+
     return lookup[value];
   }
 
