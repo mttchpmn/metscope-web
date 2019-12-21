@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Container, Typography, TextField } from "@material-ui/core";
 import Axios from "axios";
 
-import { DataContext } from "../DataWrapper";
-import config from "../config";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { DataContext } from "../../DataWrapper";
+import config from "../../config";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const LoginPage = props => {
   const [loading, setLoading] = React.useState(false);

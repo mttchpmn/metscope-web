@@ -13,8 +13,8 @@ import PublicIcon from "@material-ui/icons/Public";
 import DataWrapper from "./DataWrapper";
 import Header from "./components/Header";
 
-import SignupPage from "./pages/SignupPage";
-import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/auth/SignupPage";
+import LoginPage from "./pages/auth/LoginPage";
 import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
 import BriefingPage from "./pages/BriefingPage";
