@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Typography, Grid, Button } from "@material-ui/core";
+import { Container, Grid, Button } from "@material-ui/core";
 
 const banner = require("../banner.jpg");
 const logo = require("../logo_white.png");
 
-const HomePage = props => {
+const HomePage = () => {
   return (
     <div style={{ width: "100%", height: "calc(100vh - 56px)" }}>
       <div
