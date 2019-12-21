@@ -44,6 +44,11 @@ class BriefingPage extends React.Component {
             console.log("newValue :", newValue);
             this.setState({ selectedTab: newValue });
           }}
+          style={{
+            position: "fixed",
+            bottom: 0,
+            width: "100vw"
+          }}
         >
           <BottomNavigationAction
             value="notam"
@@ -69,7 +74,7 @@ class BriefingPage extends React.Component {
           <BottomNavigationAction
             value="metvuw"
             label="MetVUW"
-            icon={<ImageIcon />}
+            icon={<SatelliteIcon />}
           />
         </BottomNavigation>
       </Container>
