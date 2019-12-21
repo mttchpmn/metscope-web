@@ -33,6 +33,7 @@ const LoginPage = props => {
     if (res.status === 200) {
       console.log("Login successful");
       console.log("token :", res.data.token);
+      console.log("res.data.user :", res.data.user);
       setLoading(false);
       return res.data.token;
     }

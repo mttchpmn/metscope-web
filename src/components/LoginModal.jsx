@@ -49,6 +49,15 @@ const LoginModal = ({ visible, onExit, history }) => {
               <Button
                 onClick={async () => {
                   await makeLoginRequest(data, values.email, values.password);
+
+                  console.log("data :", data);
+                  window.location.reload();
+                  setTimeout(
+                    function() {
+                      console.log("data 2 :", data);
+                    }.bind(this),
+                    4000
+                  );
                 }}
               >
                 Login

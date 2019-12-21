@@ -16,6 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import { DataContext } from "../DataWrapper";
 import LoginModal from "./LoginModal";
+import { logout } from "../logic/auth";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -47,19 +48,19 @@ const Header = props => {
       <DataContext.Consumer>
         {data =>
           data.userIsLoggedIn ? (
-            <Button
-              color="inherit"
-              onClick={() => {
-                console.log("Logging out...");
-                localStorage.removeItem("userIsLoggedIn");
-                data.updateProp("userIsLoggedIn", false);
-                localStorage.removeItem("userToken");
-                data.updateProp("userToken", null);
-                window.location.reload();
-              }}
-            >
-              Log Out
-            </Button>
+            <div>
+              {/* <Typography>Hi {data.user.firstName}!</Typography> */}
+              <Button
+                color="inherit"
+                onClick={() => {
+                  logout(data);
+
+                  window.location.reload();
+                }}
+              >
+                Log Out
+              </Button>
+            </div>
           ) : (
             <Button color="inherit" onClick={() => toggleModal(true)}>
               Log In

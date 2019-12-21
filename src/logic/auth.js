@@ -45,3 +45,20 @@ export const makeLoginRequest = async (context, email, password) => {
 
   return [false, "Login failed"];
 };
+
+export const logout = context => {
+  console.log("Logging out...");
+
+  const removeProp = (name, value) => {
+    context.updateProp(name, value || null);
+    localStorage.removeItem(name);
+  };
+
+  removeProp("userIsLoggedIn", false);
+  removeProp("userToken");
+  removeProp("userFirstName");
+  removeProp("userLastName");
+  removeProp("userEmail");
+
+  console.log("Logged out successfully");
+};
