@@ -27,25 +27,40 @@ class BriefingPage extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      selectedTab: "notam"
+      selectedTab: "notam",
+
+      webcams: []
     };
   }
 
   componentDidMount() {
-    Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
+    // Return to area select if nothing saved
+    if (!this.context.areasSet) this.props.history.push("/start");
+
+    // Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
+    Axios.get(`http://api.metscope.com/data/webcam/load/all`).then(response => {
       const webcams = response.data.data.webcams;
+      let filteredWebcams = [];
 
-      // let allCams = [].concat(webcams.fiords);
+      const lookup = {
+        // Should we change API response to return code rather than name?
+        fiords: "fd",
+        alps: "al",
+        clyde: "cy",
+        windward: "ww"
+      };
 
-      Object.keys(webcams).map(camName => {
-        // allCams = allCams.concat(webcams[camName]);
-        this.setState({ [[camName]]: webcams[camName] });
+      Object.keys(webcams).map(areaName => {
+        const code = lookup[areaName];
+
+        if (this.context[code])
+          filteredWebcams = filteredWebcams.concat(webcams[areaName]);
       });
 
       this.setState({
-        // webcams: allCams,
-        loading: false
+        webcams: filteredWebcams
       });
+      console.log("this.state :", this.state);
     });
   }
 
@@ -55,7 +70,7 @@ class BriefingPage extends React.Component {
       aerodromes: <AerodromeContainer />,
       aaw: <AawContainer />,
       charts: <ChartContainer />,
-      webcams: <WebcamContainer />,
+      webcams: <WebcamContainer webcams={this.state.webcams} />,
       metvuw: <MetvuwContainer />
     };
 
