@@ -79,8 +79,10 @@ class BriefingPage extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Container>{this.loadContainer(this.state.selectedTab)}</Container>
+      <Container align="center" maxWidth="xl">
+        <Container align="center" maxWidth="xl">
+          {this.loadContainer(this.state.selectedTab)}
+        </Container>
 
         <BottomNavigation
           value={this.state.selectedTab}
