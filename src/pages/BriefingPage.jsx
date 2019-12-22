@@ -29,7 +29,10 @@ class BriefingPage extends React.Component {
       selectedTab: "notam",
 
       webcamLoading: true,
-      webcams: []
+      webcams: [],
+
+      metvuwLoading: true,
+      metvuw: []
     };
   }
 
@@ -64,6 +67,13 @@ class BriefingPage extends React.Component {
       });
       console.log("this.state :", this.state);
     });
+
+    // LOAD METVUW  ////////////////////////////////////////////
+    Axios.get(`http://api.metscope.com/data/weather/load/metvuw/nzsi`).then(
+      response => {
+        this.setState({ metvuw: response.data.images, metvuwLoading: false });
+      }
+    );
   }
 
   loadContainer(value) {
@@ -78,7 +88,12 @@ class BriefingPage extends React.Component {
           webcams={this.state.webcams}
         />
       ),
-      metvuw: <MetvuwContainer />
+      metvuw: (
+        <MetvuwContainer
+          loading={this.state.metvuwLoading}
+          images={this.state.metvuw}
+        />
+      )
     };
 
     return lookup[value];
