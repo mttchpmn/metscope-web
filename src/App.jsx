@@ -20,9 +20,8 @@ import StartPage from "./pages/StartPage";
 import BriefingPage from "./pages/BriefingPage";
 
 const trackingId = process.env.REACT_APP_TRACKING_ID;
-console.log("trackingId :", trackingId);
 ReactGA.initialize(trackingId, {
-  debug: true,
+  debug: false,
   siteSpeedSampleRate: 100
 });
 
