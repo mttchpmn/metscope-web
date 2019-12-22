@@ -26,87 +26,28 @@ ReactGA.initialize(trackingId, {
 });
 
 const history = createBrowserHistory();
-
 history.listen(location => {
   ReactGA.set({ page: location.pathname });
   ReactGA.pageview(location.pathname);
 });
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      areas: []
-    };
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <DataWrapper>
-          <div>
-            <HashRouter history={history}>
-              <Header>
-                <div>
-                  <List>
-                    <Link to="/select">
-                      <ListItem button>
-                        <ListItemIcon>
-                          <SatelliteIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Area Select"} />
-                      </ListItem>
-                    </Link>
-                    <Link to="/webcams">
-                      <ListItem button>
-                        <ListItemIcon>
-                          <CameraIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Webcams"} />
-                      </ListItem>
-                    </Link>
+const App = () => {
+  return (
+    <div className="App">
+      <DataWrapper>
+        <HashRouter history={history}>
+          <Header />
+          <Route exact path="/" component={HomePage} />
 
-                    <Link to="/metvuw">
-                      <ListItem button>
-                        <ListItemIcon>
-                          <PhotoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"MetVUW"} />
-                      </ListItem>
-                    </Link>
+          <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/login" component={LoginPage} />
 
-                    <Link to="/qmug">
-                      <ListItem button>
-                        <ListItemIcon>
-                          <FlightIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"QMUG"} />
-                      </ListItem>
-                    </Link>
-
-                    <Link to="/windy">
-                      <ListItem button>
-                        <ListItemIcon>
-                          <PublicIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Windy"} />
-                      </ListItem>
-                    </Link>
-                  </List>
-                </div>
-              </Header>
-
-              <Route exact path="/signup" component={SignupPage} />
-              <Route exact path="/login" component={LoginPage} />
-
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/start" component={StartPage} />
-              <Route exact path="/briefing" component={BriefingPage} />
-            </HashRouter>
-          </div>
-        </DataWrapper>
-      </div>
-    );
-  }
-}
+          <Route exact path="/start" component={StartPage} />
+          <Route exact path="/briefing" component={BriefingPage} />
+        </HashRouter>
+      </DataWrapper>
+    </div>
+  );
+};
 
 export default App;

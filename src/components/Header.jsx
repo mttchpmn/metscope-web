@@ -2,17 +2,10 @@ import React from "react";
 import {
   AppBar,
   Button,
-  Container,
   Toolbar,
-  IconButton,
   Typography,
-  makeStyles,
-  Drawer,
-  Dialog,
-  TextField,
-  Link
+  makeStyles
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 
 import { DataContext } from "../DataWrapper";
 import LoginModal from "./LoginModal";
@@ -31,17 +24,6 @@ const useStyles = makeStyles(theme => ({
 const Header = props => {
   const classes = useStyles();
   const [modalVisible, toggleModal] = React.useState(false);
-  const [state, setState] = React.useState({
-    drawerOpen: false
-  });
-
-  const openDrawer = () => {
-    setState({ ...state, drawerOpen: true });
-  };
-
-  const closeDrawer = () => {
-    setState({ ...state, drawerOpen: false });
-  };
 
   const loginLogoutButton = () => {
     return (
@@ -77,19 +59,12 @@ const Header = props => {
 
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-          <IconButton edge="start" onClick={() => openDrawer()}>
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
             Metscope
           </Typography>
           {loginLogoutButton()}
         </Toolbar>
       </AppBar>
-
-      <Drawer open={state.drawerOpen} onClose={() => closeDrawer()}>
-        {props.children}
-      </Drawer>
     </div>
   );
 };
