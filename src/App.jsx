@@ -3,13 +3,6 @@ import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
 import { HashRouter, Route, Link } from "react-router-dom";
 
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import CameraIcon from "@material-ui/icons/CameraAlt";
-import SatelliteIcon from "@material-ui/icons/Satellite";
-import FlightIcon from "@material-ui/icons/Flight";
-import PhotoIcon from "@material-ui/icons/Photo";
-import PublicIcon from "@material-ui/icons/Public";
-
 import DataWrapper from "./DataWrapper";
 import Header from "./components/Header";
 
