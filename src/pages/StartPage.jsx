@@ -97,7 +97,9 @@ class StartPage extends Component {
                         <Button
                           variant="contained"
                           color="inherit"
-                          onClick={() => console.log("Get briefing clicked")}
+                          onClick={() =>
+                            this.context.updateProp("areasSet", true)
+                          }
                         >
                           Get Briefing
                         </Button>
@@ -113,5 +115,6 @@ class StartPage extends Component {
     );
   }
 }
+StartPage.contextType = DataContext;
 
 export default StartPage;
