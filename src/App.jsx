@@ -1,7 +1,7 @@
 import React from "react";
 import ReactGA from "react-ga";
 import { createBrowserHistory } from "history";
-import { HashRouter, Route, Link } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 
 import DataWrapper from "./DataWrapper";
 import Header from "./components/Header";
