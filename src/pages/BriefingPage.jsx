@@ -26,9 +26,9 @@ class BriefingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
       selectedTab: "notam",
 
+      webcamLoading: true,
       webcams: []
     };
   }
@@ -37,6 +37,7 @@ class BriefingPage extends React.Component {
     // Return to area select if nothing saved
     if (!this.context.areasSet) this.props.history.push("/start");
 
+    // LOAD WEBCAMS  ////////////////////////////////////////////
     // Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
     Axios.get(`http://api.metscope.com/data/webcam/load/all`).then(response => {
       const webcams = response.data.data.webcams;
@@ -58,6 +59,7 @@ class BriefingPage extends React.Component {
       });
 
       this.setState({
+        webcamLoading: false,
         webcams: filteredWebcams
       });
       console.log("this.state :", this.state);
@@ -70,7 +72,12 @@ class BriefingPage extends React.Component {
       aerodromes: <AerodromeContainer />,
       aaw: <AawContainer />,
       charts: <ChartContainer />,
-      webcams: <WebcamContainer webcams={this.state.webcams} />,
+      webcams: (
+        <WebcamContainer
+          loading={this.state.webcamLoading}
+          webcams={this.state.webcams}
+        />
+      ),
       metvuw: <MetvuwContainer />
     };
 
