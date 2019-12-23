@@ -52,11 +52,15 @@ class BriefingPage extends React.Component {
       response => {
         const brief = response.data.data.brief;
         // console.log("brief :", response.data.data.brief);
+        const aaw = brief.aaw.filter(
+          aaw => this.context[aaw.area.toLowerCase()]
+        );
+
         this.setState({
           briefLoading: false,
+          aaw,
           info: brief.info,
           aerodromes: brief.aerodromes,
-          aaw: brief.aaw,
           sigmet: brief.sigmet,
           charts: brief.charts
         });
