@@ -111,7 +111,12 @@ class BriefingPage extends React.Component {
       aaw: (
         <AawContainer data={this.state.aaw} loading={this.state.briefLoading} />
       ),
-      charts: <ChartContainer />,
+      charts: (
+        <ChartContainer
+          loading={this.state.briefLoading}
+          data={this.state.charts}
+        />
+      ),
       webcams: (
         <WebcamContainer
           loading={this.state.webcamLoading}
