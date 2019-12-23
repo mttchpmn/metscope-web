@@ -1,7 +1,4 @@
 import React from "react";
-import { DataContext } from "../../DataWrapper";
-import SecurePage from "../../components/SecurePage";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import {
   Container,
   Typography,
@@ -10,6 +7,11 @@ import {
   CardHeader,
   CardContent
 } from "@material-ui/core";
+
+import { DataContext } from "../../DataWrapper";
+import SecurePage from "../../components/SecurePage";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import aerodromeLookup from "../../logic/aerodromeLookup";
 
 class AerodromeContainer extends React.Component {
   constructor(props) {
@@ -22,7 +24,9 @@ class AerodromeContainer extends React.Component {
     return (
       <Grid item key={aero.aerodrome} xs={12} sm={6} md={6} lg={4} xl={3}>
         <Card>
-          <CardHeader title={aero.aerodrome} />
+          <CardHeader
+            title={`${aerodromeLookup[aero.aerodrome]} (${aero.aerodrome})`}
+          />
           <CardContent>
             <Typography>TAF</Typography>
             <pre style={{ textAlign: "left" }}>
