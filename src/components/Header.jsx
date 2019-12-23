@@ -10,6 +10,7 @@ import {
 import { DataContext } from "../DataWrapper";
 import LoginModal from "./LoginModal";
 import { logout } from "../logic/auth";
+const moment = require("moment");
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -24,6 +25,17 @@ const useStyles = makeStyles(theme => ({
 const Header = props => {
   const classes = useStyles();
   const [modalVisible, toggleModal] = React.useState(false);
+  const [time, setTime] = React.useState(moment());
+
+  React.useEffect(() => {
+    setInterval(() => {
+      setTime(
+        moment()
+          .utc()
+          .format("DD MMM YYYY HH:mm:ss")
+      );
+    }, 1000);
+  });
 
   const loginLogoutButton = () => {
     return (
@@ -61,6 +73,9 @@ const Header = props => {
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Metscope
+          </Typography>
+          <Typography textAlign="center" style={{ color: "#505050" }}>
+            {`${time} UTC`}
           </Typography>
           {loginLogoutButton()}
         </Toolbar>
