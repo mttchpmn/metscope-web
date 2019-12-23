@@ -48,7 +48,7 @@ class BriefingPage extends React.Component {
     if (!this.context.areasSet) this.props.history.push("/start");
 
     // LOAD BRIEF  ////////////////////////////////////////////
-    Axios.get("http://api-int.metscope.com/data/weather/load/brief").then(
+    Axios.get(`${config.API_ADDRESS}/data/weather/load/brief`).then(
       response => {
         const brief = response.data.data.brief;
         // console.log("brief :", response.data.data.brief);
@@ -69,8 +69,7 @@ class BriefingPage extends React.Component {
     );
 
     // LOAD WEBCAMS  ////////////////////////////////////////////
-    // Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
-    Axios.get(`http://api.metscope.com/data/webcam/load/all`).then(response => {
+    Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
       const webcams = response.data.data.webcams;
       let filteredWebcams = [];
 
@@ -97,7 +96,7 @@ class BriefingPage extends React.Component {
     });
 
     // LOAD METVUW  ////////////////////////////////////////////
-    Axios.get(`http://api.metscope.com/data/weather/load/metvuw/nzsi`).then(
+    Axios.get(`${config.API_ADDRESS}/data/weather/load/metvuw/nzsi`).then(
       response => {
         this.setState({ metvuw: response.data.images, metvuwLoading: false });
       }
@@ -106,8 +105,18 @@ class BriefingPage extends React.Component {
 
   loadContainer(value) {
     const lookup = {
-      notam: <NotamContainer />,
-      aerodromes: <AerodromeContainer />,
+      notam: (
+        <NotamContainer
+          loading={this.state.briefLoading}
+          data={this.state.aerodromes}
+        />
+      ),
+      aerodromes: (
+        <AerodromeContainer
+          loading={this.state.briefLoading}
+          data={this.state.aerodromes}
+        />
+      ),
       aaw: (
         <AawContainer data={this.state.aaw} loading={this.state.briefLoading} />
       ),
