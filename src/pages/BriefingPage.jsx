@@ -28,6 +28,13 @@ class BriefingPage extends React.Component {
     this.state = {
       selectedTab: "notam",
 
+      briefLoading: true,
+      info: [],
+      aerodromes: [],
+      aaw: [],
+      sigmet: [],
+      charts: {},
+
       webcamLoading: true,
       webcams: [],
 
@@ -39,6 +46,23 @@ class BriefingPage extends React.Component {
   componentDidMount() {
     // Return to area select if nothing saved
     if (!this.context.areasSet) this.props.history.push("/start");
+
+    // LOAD BRIEF  ////////////////////////////////////////////
+    Axios.get("http://api-int.metscope.com/data/weather/load/brief").then(
+      response => {
+        const brief = response.data.data.brief;
+        // console.log("brief :", response.data.data.brief);
+        this.setState({
+          briefLoading: false,
+          info: brief.info,
+          aerodromes: brief.aerodromes,
+          aaw: brief.aaw,
+          sigmet: brief.sigmet,
+          charts: brief.charts
+        });
+        console.log("this.state :", this.state);
+      }
+    );
 
     // LOAD WEBCAMS  ////////////////////////////////////////////
     // Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
@@ -80,7 +104,9 @@ class BriefingPage extends React.Component {
     const lookup = {
       notam: <NotamContainer />,
       aerodromes: <AerodromeContainer />,
-      aaw: <AawContainer />,
+      aaw: (
+        <AawContainer data={this.state.aaw} loading={this.state.briefLoading} />
+      ),
       charts: <ChartContainer />,
       webcams: (
         <WebcamContainer
