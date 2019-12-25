@@ -7,7 +7,7 @@ import {
   Container
 } from "@material-ui/core";
 
-import UTCClock from "../UTCClock";
+import UTCClock from "./UTCClock";
 import LoginLogoutButton from "./LoginLogoutButton";
 
 const useStyles = makeStyles(theme => ({
