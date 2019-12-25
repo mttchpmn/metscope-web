@@ -24,11 +24,7 @@ class AerodromeContainer extends React.Component {
     return (
       <Grid item key={aero.aerodrome} xs={12} sm={6} md={6} lg={4} xl={3}>
         <Card>
-          <CardHeader
-            title={`${aerodromeLookup[aero.aerodrome].name} (${
-              aero.aerodrome
-            })`}
-          />
+          <CardHeader title={`${aero.name} (${aero.aerodrome})`} />
           <CardContent>
             <Typography>TAF</Typography>
             <pre style={{ textAlign: "left" }}>
