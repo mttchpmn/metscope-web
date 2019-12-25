@@ -77,7 +77,7 @@ const LoginPage = props => {
                     localStorage.setItem("userToken", token);
                     data.updateProp("userIsLoggedIn", true);
                     localStorage.setItem("userIsLoggedIn", true);
-                    props.history.push("/select");
+                    props.history.push("/start");
                   }}
                 >
                   Login

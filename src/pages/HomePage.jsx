@@ -34,7 +34,7 @@ class HomePage extends React.Component {
               style={{ width: "100%", height: "100%" }}
             >
               <Grid item>
-                <Link to="/webcams">
+                <Link to="/login">
                   <img
                     src={logo}
                     style={{ width: "30%", height: "auto" }}
