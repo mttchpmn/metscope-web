@@ -24,7 +24,9 @@ class NotamContainer extends React.Component {
       <Grid item key={aero.aerodrome} xs={12} md={6}>
         <Card>
           <CardHeader
-            title={`${aerodromeLookup[aero.aerodrome]} (${aero.aerodrome})`}
+            title={`${aerodromeLookup[aero.aerodrome].name} (${
+              aero.aerodrome
+            })`}
           />
           <CardContent></CardContent>
           {aero.notams.map(notam => {
