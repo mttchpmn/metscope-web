@@ -24,7 +24,7 @@ const UTCClock = props => {
   return (
     <Container>
       <Typography align="center" style={{ color: "#505050" }}>
-        {time}
+        {time} UTC
       </Typography>
     </Container>
   );

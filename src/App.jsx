@@ -4,7 +4,7 @@ import { createBrowserHistory } from "history";
 import { HashRouter, Route } from "react-router-dom";
 
 import DataWrapper from "./DataWrapper";
-import Header from "./components/Header";
+import HeaderBar from "./components/HeaderBar";
 
 import SignupPage from "./pages/auth/SignupPage";
 import LoginPage from "./pages/auth/LoginPage";
@@ -29,7 +29,7 @@ const App = () => {
     <div className="App">
       <DataWrapper>
         <HashRouter history={history}>
-          <Header />
+          <HeaderBar />
           <Route exact path="/" component={HomePage} />
 
           <Route exact path="/signup" component={SignupPage} />
