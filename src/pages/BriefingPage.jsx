@@ -56,11 +56,15 @@ class BriefingPage extends React.Component {
           aaw => this.context[aaw.area.toLowerCase()]
         );
 
+        const aerodromes = brief.aerodromes.filter(
+          aero => this.context[aero.area.toLowerCase()]
+        );
+
         this.setState({
           briefLoading: false,
           aaw,
+          aerodromes,
           info: brief.info,
-          aerodromes: brief.aerodromes,
           sigmet: brief.sigmet,
           charts: brief.charts
         });
