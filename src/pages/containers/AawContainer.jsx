@@ -11,7 +11,7 @@ import {
 import { DataContext } from "../../DataWrapper";
 import SecurePage from "../../components/SecurePage";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import areaLookup from "../../areaLookup";
+import areaLookup from "../../logic/areaLookup";
 
 class AawContainer extends React.Component {
   constructor(props) {
