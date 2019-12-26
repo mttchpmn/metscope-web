@@ -52,7 +52,7 @@ class NotamContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container align="center" maxWidth="xl">
+          <Container disableGutters align="center" maxWidth="xl">
             <Typography variant="h6">NOTAMs</Typography>
             <Typography>Aerodromes</Typography>
             <Grid container spacing={1}>
