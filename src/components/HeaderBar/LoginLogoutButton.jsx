@@ -8,7 +8,7 @@ const LoginLogoutButton = () => {
   const [modal, setModal] = React.useState(false);
 
   return (
-    <Container>
+    <div>
       <LoginModal visible={modal} onExit={() => setModal(false)} />
 
       <DataContext.Consumer>
@@ -33,7 +33,7 @@ const LoginLogoutButton = () => {
           )
         }
       </DataContext.Consumer>
-    </Container>
+    </div>
   );
 };
 
