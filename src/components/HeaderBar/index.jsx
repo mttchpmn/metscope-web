@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     height: 56
   },
   title: {
-    marginLeft: 30,
     flexGrow: 1
   }
 }));
@@ -27,19 +26,17 @@ const HeaderBar = props => {
     <div>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-          <Container align="left">
-            <Typography variant="h6" className={classes.title}>
-              Metscope
-            </Typography>
-          </Container>
+          <div className={classes.title}>
+            <Typography variant="h6">Metscope</Typography>
+          </div>
 
-          <Container align="center">
+          <div align="center">
             <UTCClock />
-          </Container>
+          </div>
 
-          <Container align="right">
+          <div align="right">
             <LoginLogoutButton />
-          </Container>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
