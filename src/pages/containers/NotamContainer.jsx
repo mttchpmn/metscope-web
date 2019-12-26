@@ -12,6 +12,7 @@ import SecurePage from "../../components/SecurePage";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { DataContext } from "../../DataWrapper";
 import aerodromeLookup from "../../logic/aerodromeLookup";
+import DataWindow from "../../components/DataWindow";
 
 class NotamContainer extends React.Component {
   constructor(props) {
@@ -24,23 +25,24 @@ class NotamContainer extends React.Component {
       <Grid item key={aero.aerodrome} xs={12} md={6}>
         <Card>
           <CardHeader title={`${aero.name} (${aero.aerodrome})`} />
-          <CardContent></CardContent>
-          {aero.notams.map(notam => {
-            return (
-              <Container>
-                <Grid container justify="space-between">
-                  <Grid item xs={6}>
-                    <Typography>{notam.series}</Typography>
-                  </Grid>
+          <CardContent>
+            {aero.notams.map(notam => {
+              return (
+                <Container disableGutters>
+                  <Grid container justify="space-between">
+                    <Grid item xs={6}>
+                      <Typography>{notam.series}</Typography>
+                    </Grid>
 
-                  <Grid item xs={6}>
-                    <Typography>{notam.validity}</Typography>
+                    <Grid item xs={6}>
+                      <Typography>{notam.validity}</Typography>
+                    </Grid>
                   </Grid>
-                </Grid>
-                <pre style={{ textAlign: "left" }}>{notam.text}</pre>
-              </Container>
-            );
-          })}
+                  <DataWindow text={notam.text} />
+                </Container>
+              );
+            })}
+          </CardContent>
         </Card>
       </Grid>
     );
