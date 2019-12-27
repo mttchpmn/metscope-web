@@ -16,7 +16,8 @@ const DataWindow = ({ text }) => {
           overflowX: "auto",
           textAlign: "left",
           paddingLeft: "4px",
-          paddingRight: "4px"
+          paddingRight: "4px",
+          fontSize: 10
         }}
       >
         {text}
