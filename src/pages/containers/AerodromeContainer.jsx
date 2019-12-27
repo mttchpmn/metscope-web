@@ -11,7 +11,7 @@ import {
 import { DataContext } from "../../DataWrapper";
 import SecurePage from "../../components/SecurePage";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import aerodromeLookup from "../../logic/aerodromeLookup";
+import DataWindow from "../../components/DataWindow";
 
 class AerodromeContainer extends React.Component {
   constructor(props) {
@@ -23,23 +23,17 @@ class AerodromeContainer extends React.Component {
     if (!aero.taf && !aero.metar && !aero.atis) return null;
     return (
       <Grid item key={aero.aerodrome} xs={12} sm={6} md={6} lg={4} xl={3}>
-        <Card>
+        <Card style={{ height: "100%" }}>
           <CardHeader title={`${aero.name} (${aero.aerodrome})`} />
           <CardContent>
             <Typography>TAF</Typography>
-            <pre style={{ textAlign: "left" }}>
-              {aero.taf || "None received"}
-            </pre>
+            <DataWindow text={aero.taf || "None received"} />
 
             <Typography>METAR</Typography>
-            <pre style={{ textAlign: "left" }}>
-              {aero.metar || "None received"}
-            </pre>
+            <DataWindow text={aero.metar || "None received"} />
 
             <Typography>ATIS</Typography>
-            <pre style={{ textAlign: "left" }}>
-              {aero.atis || "None received"}
-            </pre>
+            <DataWindow text={aero.atis || "None received"} />
           </CardContent>
         </Card>
       </Grid>
@@ -52,7 +46,7 @@ class AerodromeContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container align="center" maxWidth="xl">
+          <Container disableGutters align="center" maxWidth="xl">
             <Typography variant="h6">Aerodromes</Typography>
             <Grid container spacing={1}>
               {this.props.data.map(aerodrome => this.aerodromeCard(aerodrome))}
