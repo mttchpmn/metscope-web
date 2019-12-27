@@ -34,10 +34,16 @@ class ChartContainer extends React.Component {
               open={this.state.dialogOpen}
               onClose={() => this.setState({ dialogOpen: false })}
             >
-              <Card style={{ height: "calc(100vh - 64px)" }}>
+              <Card
+                style={{
+                  paddingTop: 10,
+                  height: "calc(100vh - 64px)",
+                  overflowY: "auto"
+                }}
+              >
                 <CardMedia
                   component="img"
-                  height={"100%"}
+                  width={"100vw"}
                   src={this.state.selectedImage}
                 />
               </Card>

@@ -9,11 +9,7 @@ import AreaMap from "./AreaMap";
 const StartPage = () => {
   return (
     <SecurePage>
-      <Container
-        maxWidth="xl"
-        className="FOOOOO"
-        style={{ height: "calc(100vh - 56px)" }}
-      >
+      <Container maxWidth="xl" style={{ height: "calc(100vh - 56px)" }}>
         <DataContext.Consumer>
           {data => (
             <Grid

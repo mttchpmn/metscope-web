@@ -60,7 +60,9 @@ const FullScreenDialog = props => {
               
             </Grid>
           </Grid> */}
-      <Container align="center">{props.children}</Container>
+      <Container disableGutters align="center">
+        {props.children}
+      </Container>
     </Dialog>
   );
 };
