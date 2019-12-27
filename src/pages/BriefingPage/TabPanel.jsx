@@ -12,7 +12,9 @@ const TabPanel = props => {
       id={`tabpanel-${index}`}
       {...other}
     >
-      {value === index && <Container>{children}</Container>}
+      {value === index && (
+        <Container style={{ paddingTop: 10 }}>{children}</Container>
+      )}
     </Typography>
   );
 };
