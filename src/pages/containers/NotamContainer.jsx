@@ -27,8 +27,8 @@ class NotamContainer extends React.Component {
           <CardContent>
             {aero.notams.map(notam => {
               return (
-                <Container disableGutters maxWidth="xl">
-                  <Grid container justify="space-between" maxWidth="xl">
+                <Container key={notam.series} disableGutters>
+                  <Grid container justify="space-between">
                     <Grid item xs={6}>
                       <Typography
                         style={{
@@ -62,7 +62,7 @@ class NotamContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container disableGutters align="center" maxWidth="xl">
+          <Container disableGutters align="center">
             <Typography variant="h6">NOTAMs</Typography>
             <Typography>Aerodromes</Typography>
             <Grid container spacing={1}>
