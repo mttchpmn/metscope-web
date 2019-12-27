@@ -4,7 +4,7 @@ import {
   Toolbar,
   Typography,
   makeStyles,
-  Container
+  Link
 } from "@material-ui/core";
 
 import UTCClock from "./UTCClock";
@@ -27,7 +27,11 @@ const HeaderBar = props => {
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <div className={classes.title}>
-            <Typography variant="h6">Metscope</Typography>
+            <Link href="/">
+              <Typography variant="h6" style={{ color: "#fff" }}>
+                Metscope
+              </Typography>
+            </Link>
           </div>
 
           <div align="center">
