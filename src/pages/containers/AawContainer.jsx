@@ -12,6 +12,7 @@ import { DataContext } from "../../DataWrapper";
 import SecurePage from "../../components/SecurePage";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import areaLookup from "../../logic/areaLookup";
+import DataWindow from "../../components/DataWindow";
 
 class AawContainer extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class AawContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container align="center" maxWidth="xl">
+          <Container disableGutters align="center" maxWidth="xl">
             <Typography align="center" variant="h6">
               Aviation Area Winds
             </Typography>
@@ -33,14 +34,14 @@ class AawContainer extends React.Component {
               {this.props.data.map(aaw => {
                 return (
                   <Grid item key={aaw.area} xs={12} sm={6} md={6} lg={4} xl={3}>
-                    <Card>
+                    <Card style={{ height: "100%" }}>
                       <CardHeader
                         title={`${areaLookup[aaw.area.toLowerCase()]} (${
                           aaw.area
                         })`}
                       ></CardHeader>
                       <CardContent>
-                        <pre style={{ textAlign: "left" }}>{aaw.aaw}</pre>
+                        <DataWindow text={aaw.aaw} />
                       </CardContent>
                     </Card>
                   </Grid>
