@@ -5,7 +5,7 @@ const DataWindow = ({ text }) => {
   return (
     <Container
       disableGutters
-      style={{ border: "1px solid #505050", borderRadius: "4px" }}
+      style={{ border: "1px solid rgba(50, 50, 50, 0.3)", borderRadius: "4px" }}
     >
       <pre
         style={{
