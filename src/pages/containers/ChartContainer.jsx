@@ -28,7 +28,7 @@ class ChartContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container align="center" maxWidth="xl">
+          <Container disableGutters align="center" maxWidth="xl">
             <FullScreenDialog
               title="MetVuw Image"
               open={this.state.dialogOpen}
