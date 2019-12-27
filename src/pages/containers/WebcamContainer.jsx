@@ -19,8 +19,6 @@ class WebcamContainer extends React.Component {
           <LoadingSpinner />
         ) : (
           <Container disableGutters align="center" maxWidth="xl">
-            <Typography variant="h6">Webcams</Typography>
-
             <Grid alignContent="center" container spacing={1}>
               {this.props.webcams.map(camObject => {
                 if (camObject.images && camObject.images.length) {

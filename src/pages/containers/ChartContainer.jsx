@@ -43,8 +43,6 @@ class ChartContainer extends React.Component {
               </Card>
             </FullScreenDialog>
 
-            <Typography variant="h6">Charts</Typography>
-
             <Typography>SIGMET / SIGWX</Typography>
             <Grid container spacing={1}>
               {this.props.data.sigmet

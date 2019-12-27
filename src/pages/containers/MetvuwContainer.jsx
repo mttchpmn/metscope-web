@@ -43,8 +43,6 @@ class MetvuwContainer extends React.Component {
               </Card>
             </FullScreenDialog>
 
-            <Typography variant="h6">MetVUW Charts</Typography>
-
             <Grid container spacing={1}>
               {this.props.images.map((img, index) => {
                 return (

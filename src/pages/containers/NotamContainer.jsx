@@ -63,7 +63,6 @@ class NotamContainer extends React.Component {
           <LoadingSpinner />
         ) : (
           <Container disableGutters align="center">
-            <Typography variant="h6">NOTAMs</Typography>
             <Typography>Aerodromes</Typography>
             <Grid container spacing={1}>
               {this.props.data.map(aerodrome => this.notamCard(aerodrome))}

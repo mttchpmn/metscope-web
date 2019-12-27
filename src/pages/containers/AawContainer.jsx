@@ -27,9 +27,6 @@ class AawContainer extends React.Component {
           <LoadingSpinner />
         ) : (
           <Container disableGutters align="center" maxWidth="xl">
-            <Typography align="center" variant="h6">
-              Aviation Area Winds
-            </Typography>
             <Grid container spacing={1}>
               {this.props.data.map(aaw => {
                 return (

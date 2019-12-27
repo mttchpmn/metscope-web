@@ -47,7 +47,6 @@ class AerodromeContainer extends React.Component {
           <LoadingSpinner />
         ) : (
           <Container disableGutters align="center" maxWidth="xl">
-            <Typography variant="h6">Aerodromes</Typography>
             <Grid container spacing={1}>
               {this.props.data.map(aerodrome => this.aerodromeCard(aerodrome))}
             </Grid>
