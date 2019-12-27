@@ -149,8 +149,8 @@ class BriefingPage extends React.Component {
 
   render() {
     return (
-      <Container disableGutters align="center">
-        <Container align="center" style={{ paddingBottom: 58 }}>
+      <Container disableGutters align="center" maxWidth="xl">
+        <Container maxWidth="xl" align="center" style={{ paddingBottom: 58 }}>
           {this.loadContainer(this.state.selectedTab)}
         </Container>
 

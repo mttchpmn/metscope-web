@@ -21,14 +21,14 @@ class NotamContainer extends React.Component {
 
   notamCard(aero) {
     return (
-      <Grid item key={aero.aerodrome} xs={12} md={6}>
+      <Grid item key={aero.aerodrome} xs={12} md={6} lg={4}>
         <Card style={{ height: "100%" }}>
           <CardHeader title={`${aero.name} (${aero.aerodrome})`} />
           <CardContent>
             {aero.notams.map(notam => {
               return (
-                <Container disableGutters>
-                  <Grid container justify="space-between">
+                <Container disableGutters maxWidth="xl">
+                  <Grid container justify="space-between" maxWidth="xl">
                     <Grid item xs={6}>
                       <Typography
                         style={{
