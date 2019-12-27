@@ -18,10 +18,10 @@ class WebcamContainer extends React.Component {
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
-          <Container align="center" maxWidth="xl">
+          <Container disableGutters align="center" maxWidth="xl">
             <Typography variant="h6">Webcams</Typography>
 
-            <Grid container spacing={1}>
+            <Grid alignContent="center" container spacing={1}>
               {this.props.webcams.map(camObject => {
                 if (camObject.images && camObject.images.length) {
                   return (
@@ -29,7 +29,7 @@ class WebcamContainer extends React.Component {
                       key={camObject.name}
                       item
                       xs={12}
-                      sm={6}
+                      // sm={8}
                       md={6}
                       lg={4}
                       xl={3}

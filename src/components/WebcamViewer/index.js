@@ -79,8 +79,8 @@ class WebcamViewer extends Component {
 
   mediaControls(webcam) {
     return (
-      <Container align="center">
-        <Container align="center">
+      <Container disableGutters align="center">
+        <Container disableGutters align="center">
           <IconButton
             onClick={() => this.setState({ index: 0 })}
             disabled={this.state.index === 0}
