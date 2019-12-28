@@ -78,8 +78,14 @@ class NotamContainer extends React.Component {
             </Card>
             <Typography>Aerodromes</Typography>
             <Grid container spacing={1}>
-              {this.props.data.aerodromes.map(aerodrome =>
-                this.notamCard(aerodrome)
+              {this.props.data.aerodromes.length ? (
+                this.props.data.aerodromes.map(aerodrome =>
+                  this.notamCard(aerodrome)
+                )
+              ) : (
+                <Container align="center">
+                  <Typography align="center">No data received</Typography>
+                </Container>
               )}
             </Grid>
           </Container>

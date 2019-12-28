@@ -28,22 +28,36 @@ class AawContainer extends React.Component {
         ) : (
           <Container disableGutters align="center" maxWidth="xl">
             <Grid container spacing={1}>
-              {this.props.data.map(aaw => {
-                return (
-                  <Grid item key={aaw.area} xs={12} sm={6} md={6} lg={4} xl={3}>
-                    <Card style={{ height: "100%" }}>
-                      <CardHeader
-                        title={`${areaLookup[aaw.area.toLowerCase()]} (${
-                          aaw.area
-                        })`}
-                      ></CardHeader>
-                      <CardContent>
-                        <DataWindow text={aaw.aaw} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                );
-              })}
+              {this.props.data.length ? (
+                this.props.data.map(aaw => {
+                  return (
+                    <Grid
+                      item
+                      key={aaw.area}
+                      xs={12}
+                      sm={6}
+                      md={6}
+                      lg={4}
+                      xl={3}
+                    >
+                      <Card style={{ height: "100%" }}>
+                        <CardHeader
+                          title={`${areaLookup[aaw.area.toLowerCase()]} (${
+                            aaw.area
+                          })`}
+                        ></CardHeader>
+                        <CardContent>
+                          <DataWindow text={aaw.aaw} />
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  );
+                })
+              ) : (
+                <Container align="center">
+                  <Typography align="center">No data received</Typography>
+                </Container>
+              )}
             </Grid>
           </Container>
         )}

@@ -48,7 +48,13 @@ class AerodromeContainer extends React.Component {
         ) : (
           <Container disableGutters align="center" maxWidth="xl">
             <Grid container spacing={1}>
-              {this.props.data.map(aerodrome => this.aerodromeCard(aerodrome))}
+              {this.props.data.length ? (
+                this.props.data.map(aerodrome => this.aerodromeCard(aerodrome))
+              ) : (
+                <Container align="center">
+                  <Typography align="center">No data received</Typography>
+                </Container>
+              )}
             </Grid>
           </Container>
         )}
