@@ -11,6 +11,7 @@ import WebcamContainer from "../containers/WebcamContainer";
 import MetvuwContainer from "../containers/MetvuwContainer";
 import { DataContext } from "../../DataWrapper";
 import config from "../../config";
+import RequestError from "./RequestError";
 
 class BriefingPage extends React.Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class BriefingPage extends React.Component {
       tabIndex: 0,
 
       briefLoading: true,
+      requestError: false,
+
       info: [],
       aerodromes: [],
       aaw: [],
@@ -34,12 +37,18 @@ class BriefingPage extends React.Component {
   }
 
   componentDidMount() {
+    const instance = Axios.create({
+      baseURL: config.API_ADDRESS,
+      timeout: 9000 // 9 seconds
+    });
+
     // Return to area select if nothing saved
     if (!this.context.areasSet) this.props.history.push("/start");
 
     // LOAD BRIEF  ////////////////////////////////////////////
-    Axios.get(`${config.API_ADDRESS}/data/weather/load/brief`).then(
-      response => {
+    instance
+      .get(`/data/weather/load/brief`)
+      .then(response => {
         const brief = response.data.data.brief;
         // console.log("brief :", response.data.data.brief);
         const aaw = brief.aaw.filter(
@@ -59,11 +68,14 @@ class BriefingPage extends React.Component {
           charts: brief.charts
         });
         console.log("this.state :", this.state);
-      }
-    );
+      })
+      .catch(err => {
+        // We've hit the timeout - error contacting API
+        if (err.code === `ECONNABORTED`) this.setState({ requestError: true });
+      });
 
     // LOAD WEBCAMS  ////////////////////////////////////////////
-    Axios.get(`${config.API_ADDRESS}/data/webcam/load/all`).then(response => {
+    instance.get(`/data/webcam/load/all`).then(response => {
       const webcams = response.data.data.webcams;
       let filteredWebcams = [];
 
@@ -100,60 +112,69 @@ class BriefingPage extends React.Component {
   render() {
     return (
       <Container disableGutters align="center" maxWidth="xl">
-        <AppBar position="static" color="default">
-          <Tabs
-            value={this.state.tabIndex}
-            onChange={(e, tabIndex) => this.setState({ tabIndex })}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="scrollable"
-            scrollButtons="auto"
-          >
-            <Tab label="NOTAM" />
-            <Tab label="AERO" />
-            <Tab label="AAW" />
-            <Tab label="CHART" />
-            <Tab label="WEBCAM" />
-            <Tab label="METVUW" />
-          </Tabs>
-        </AppBar>
+        {this.state.requestError ? (
+          <RequestError />
+        ) : (
+          <Container disableGutters>
+            <AppBar position="static" color="default">
+              <Tabs
+                value={this.state.tabIndex}
+                onChange={(e, tabIndex) => this.setState({ tabIndex })}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+              >
+                <Tab label="NOTAM" />
+                <Tab label="AERO" />
+                <Tab label="AAW" />
+                <Tab label="CHART" />
+                <Tab label="WEBCAM" />
+                <Tab label="METVUW" />
+              </Tabs>
+            </AppBar>
 
-        <TabPanel value={this.state.tabIndex} index={0}>
-          <NotamContainer
-            loading={this.state.briefLoading}
-            data={{ aerodromes: this.state.aerodromes, info: this.state.info }}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.tabIndex} index={1}>
-          <AerodromeContainer
-            loading={this.state.briefLoading}
-            data={this.state.aerodromes}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.tabIndex} index={2}>
-          <AawContainer
-            data={this.state.aaw}
-            loading={this.state.briefLoading}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.tabIndex} index={3}>
-          <ChartContainer
-            loading={this.state.briefLoading}
-            data={this.state.charts}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.tabIndex} index={4}>
-          <WebcamContainer
-            loading={this.state.webcamLoading}
-            webcams={this.state.webcams}
-          />
-        </TabPanel>
-        <TabPanel value={this.state.tabIndex} index={5}>
-          <MetvuwContainer
-            loading={this.state.metvuwLoading}
-            images={this.state.metvuw}
-          />
-        </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={0}>
+              <NotamContainer
+                loading={this.state.briefLoading}
+                data={{
+                  aerodromes: this.state.aerodromes,
+                  info: this.state.info
+                }}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={1}>
+              <AerodromeContainer
+                loading={this.state.briefLoading}
+                data={this.state.aerodromes}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={2}>
+              <AawContainer
+                data={this.state.aaw}
+                loading={this.state.briefLoading}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={3}>
+              <ChartContainer
+                loading={this.state.briefLoading}
+                data={this.state.charts}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={4}>
+              <WebcamContainer
+                loading={this.state.webcamLoading}
+                webcams={this.state.webcams}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabIndex} index={5}>
+              <MetvuwContainer
+                loading={this.state.metvuwLoading}
+                images={this.state.metvuw}
+              />
+            </TabPanel>
+          </Container>
+        )}
       </Container>
     );
   }
