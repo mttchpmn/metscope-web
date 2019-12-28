@@ -115,7 +115,7 @@ class BriefingPage extends React.Component {
         {this.state.requestError ? (
           <RequestError />
         ) : (
-          <Container disableGutters>
+          <Container disableGutters maxWidth="xl">
             <AppBar position="static" color="default">
               <Tabs
                 value={this.state.tabIndex}
