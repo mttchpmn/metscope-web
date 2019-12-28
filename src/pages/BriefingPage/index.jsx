@@ -121,7 +121,7 @@ class BriefingPage extends React.Component {
         <TabPanel value={this.state.tabIndex} index={0}>
           <NotamContainer
             loading={this.state.briefLoading}
-            data={this.state.aerodromes}
+            data={{ aerodromes: this.state.aerodromes, info: this.state.info }}
           />
         </TabPanel>
         <TabPanel value={this.state.tabIndex} index={1}>
