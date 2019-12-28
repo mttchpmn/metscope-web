@@ -66,14 +66,18 @@ class NotamContainer extends React.Component {
             <Typography>Brief Information</Typography>
             <Card>
               <CardContent>
-                <Typography>{this.props.data.info.identifier}</Typography>
-                <Typography>
+                <Typography style={{ fontSize: 16, fontWeight: "bold" }}>
+                  {this.props.data.info.identifier}
+                </Typography>
+                <Typography style={{ fontSize: 12 }}>
                   ISSUED AT {this.props.data.info.issueDate}
                 </Typography>
-                <Typography>
+                <Typography style={{ fontSize: 12 }}>
                   VALID FROM {this.props.data.info.validFrom}
                 </Typography>
-                <Typography>VALID TO {this.props.data.info.validTo}</Typography>
+                <Typography style={{ fontSize: 12 }}>
+                  VALID TO {this.props.data.info.validTo}
+                </Typography>
               </CardContent>
             </Card>
             <Typography>Aerodromes</Typography>
