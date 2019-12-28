@@ -16,6 +16,7 @@ const Area = ({ value, coords }) => {
         console.log("Area clicked");
         const currentVal = data[value];
         data.updateProp(value, !currentVal);
+        if (!data.areasSet) data.updateProp("areasSet", true);
       }}
     />
   );

@@ -5,11 +5,19 @@ import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { DataContext } from "../../DataWrapper";
 import SecurePage from "../../components/SecurePage";
 import AreaMap from "./AreaMap";
+import ErrorToast from "../../components/ErrorToast";
 
-const StartPage = () => {
+const StartPage = props => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <SecurePage>
       <Container maxWidth="xl" style={{ height: "calc(100vh - 56px)" }}>
+        <ErrorToast
+          open={open}
+          text="No areas selected"
+          onExit={() => setOpen(false)}
+        />
         <DataContext.Consumer>
           {data => (
             <Grid
@@ -33,15 +41,17 @@ const StartPage = () => {
 
                 <Container>
                   <Grid item align="center">
-                    <Link to="/briefing">
-                      <Button
-                        variant="contained"
-                        color="inherit"
-                        onClick={() => data.updateProp("areasSet", true)}
-                      >
-                        Get Briefing
-                      </Button>
-                    </Link>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => {
+                        data.areasSet
+                          ? props.history.push("/briefing")
+                          : setOpen(true);
+                      }}
+                    >
+                      Get Briefing
+                    </Button>
                   </Grid>
                 </Container>
               </Grid>
