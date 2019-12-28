@@ -6,6 +6,7 @@ import { DataContext } from "../../DataWrapper";
 import SecurePage from "../../components/SecurePage";
 import AreaMap from "./AreaMap";
 import ErrorToast from "../../components/ErrorToast";
+import MTest from "./MTest";
 
 const StartPage = props => {
   const [open, setOpen] = React.useState(false);
@@ -37,7 +38,9 @@ const StartPage = props => {
                     : "Nothing selected"}
                 </Typography>
 
-                <AreaMap />
+                {/* <AreaMap /> */}
+
+                <MTest />
 
                 <Container>
                   <Grid item align="center">
