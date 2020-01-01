@@ -13,7 +13,9 @@ const TabPanel = props => {
       {...other}
     >
       {value === index && (
-        <Container style={{ paddingTop: 10 }}>{children}</Container>
+        <Container maxWidth="xl" style={{ paddingTop: 10 }}>
+          {children}
+        </Container>
       )}
     </Typography>
   );
