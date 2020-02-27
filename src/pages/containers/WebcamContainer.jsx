@@ -14,7 +14,8 @@ class WebcamContainer extends React.Component {
 
   render() {
     return (
-      <SecurePage>
+      // <SecurePage>
+      <div>
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
@@ -40,7 +41,8 @@ class WebcamContainer extends React.Component {
             </Grid>
           </Container>
         )}
-      </SecurePage>
+      </div>
+      // </SecurePage>
     );
   }
 }

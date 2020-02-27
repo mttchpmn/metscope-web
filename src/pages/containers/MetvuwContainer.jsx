@@ -24,7 +24,8 @@ class MetvuwContainer extends React.Component {
 
   render() {
     return (
-      <SecurePage>
+      // <SecurePage>
+      <div>
         {this.props.loading ? (
           <LoadingSpinner />
         ) : (
@@ -66,7 +67,8 @@ class MetvuwContainer extends React.Component {
             </Grid>
           </Container>
         )}
-      </SecurePage>
+      </div>
+      // </SecurePage>
     );
   }
 }

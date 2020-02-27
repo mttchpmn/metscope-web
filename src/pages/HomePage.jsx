@@ -10,7 +10,7 @@ class HomePage extends React.Component {
   componentDidMount() {
     console.log("context :", this.context); // Debug
     // Navigate to 'Start' page if user already logged in
-    if (this.context.userIsLoggedIn) this.props.history.push("/start");
+    // if (this.context.userIsLoggedIn) this.props.history.push("/start");
   }
 
   render() {
@@ -42,13 +42,13 @@ class HomePage extends React.Component {
                   />
                 </Link>
                 <Grid item>
-                  <Link to="/signup">
+                  <Link to="/start">
                     <Button
                       variant="contained"
                       color="inherit"
                       onClick={() => console.log("Signup clicked")}
                     >
-                      Sign Up
+                      Launch
                     </Button>
                   </Link>
                 </Grid>

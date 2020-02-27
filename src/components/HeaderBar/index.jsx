@@ -38,9 +38,9 @@ const HeaderBar = props => {
             <UTCClock />
           </div>
 
-          <div align="right">
+          {/* <div align="right">
             <LoginLogoutButton />
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
     </div>
