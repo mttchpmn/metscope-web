@@ -11,6 +11,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import HomePage from "./pages/HomePage";
 import StartPage from "./pages/StartPage";
 import BriefingPage from "./pages/BriefingPage";
+import { Container, Typography } from "@material-ui/core";
 
 const history = createBrowserHistory();
 history.listen(location => {
@@ -19,6 +20,15 @@ history.listen(location => {
 });
 
 const App = () => {
+  return (
+    <Container align="center">
+      <Typography>Under Maintenance</Typography>
+      <Typography>
+        MetScope is currently down for maintenance - apologies for the
+        inconvenience
+      </Typography>
+    </Container>
+  );
   return (
     <div className="App">
       <DataWrapper>
