@@ -20,15 +20,15 @@ history.listen(location => {
 });
 
 const App = () => {
-  return (
-    <Container align="center">
-      <Typography>Under Maintenance</Typography>
-      <Typography>
-        MetScope is currently down for maintenance - apologies for the
-        inconvenience
-      </Typography>
-    </Container>
-  );
+  // return (
+  //   <Container align="center">
+  //     <Typography>Under Maintenance</Typography>
+  //     <Typography>
+  //       MetScope is currently down for maintenance - apologies for the
+  //       inconvenience
+  //     </Typography>
+  //   </Container>
+  // );
   return (
     <div className="App">
       <DataWrapper>
