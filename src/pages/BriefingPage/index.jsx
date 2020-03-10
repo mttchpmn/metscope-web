@@ -84,7 +84,8 @@ class BriefingPage extends React.Component {
         fiords: "fd",
         alps: "al",
         clyde: "cy",
-        windward: "ww"
+        windward: "ww",
+        tamaki: "ta"
       };
 
       Object.keys(webcams).map(areaName => {
